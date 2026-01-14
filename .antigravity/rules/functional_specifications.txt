@@ -1,0 +1,410 @@
+1) Accroches / slogans (modernes, mémorisables, pas ventards)
+Options H1 (à tester)
+“Du web propre. Qui vend.”
+
+
+“Votre site, enfin à la hauteur.”
+
+
+“Design net. Code solide. Résultats.”
+
+
+“On construit. Vous avancez.”
+
+
+“Du sur-mesure, sans le chaos.”
+
+
+“Plus clair, plus rapide, plus durable.” (sobre mais percutant)
+
+
+Sous-titres (exemples)
+“Sites vitrines, plateformes, web apps. Un process carré, des livrables clairs, une mise en ligne sans stress.”
+
+
+“Du branding au déploiement : performance, SEO, accessibilité. On optimise pour les vrais usages.”
+
+
+“On transforme une idée floue en produit en ligne — avec une méthode, des jalons, et de la transparence.”
+
+
+Micro-preuves (3 bullets sous le hero)
+“Scope cadré, livrables écrits”
+
+
+“Performance & SEO dès la base”
+
+
+“Suivi + maintenance optionnelle”
+
+
+
+2) Structure de page (single-page) + navigation
+Format
+Landing single-page (scroll) + pages légales.
+
+
+Option plus tard : /portfolio + /offres (si tu veux SEO et profondeur).
+
+
+Header sticky
+Offres
+
+
+Réalisations
+
+
+Méthode
+
+
+Estimation
+
+
+FAQ
+
+
+Contact
+
+
+CTA : “Réserver un call 15 min”
+
+
+
+3) Spécifications fonctionnelles par section
+3.1 Hero (au-dessus de la ligne de flottaison)
+Objectif : comprendre en 5 secondes + action.
+Contenu obligatoire
+H1 + sous-titre
+
+
+2 CTA :
+
+
+Primaire : Réserver un call 15 min
+
+
+Secondaire : Estimer mon projet (scroll vers module d’estimation)
+
+
+1 visuel : mockup clean (ou une mini-vidéo 8–12s, option)
+
+
+Micro-preuves (3 bullets max)
+
+
+Règles
+Pas de superlatifs (“incroyable”, “révolutionnaire”)
+
+
+Pas de chiffres inventés
+
+
+
+3.2 “Ce qu’on fait” (3 cartes, ultra lisible)
+Objectif : tes 3 “jobs” principaux.
+Cartes :
+Sites vitrines & landing pages (conversion + crédibilité)
+
+
+Sites dynamiques / CMS (autonomie + SEO)
+
+
+Web apps / plateformes (MVP, dashboards, outils internes)
+
+
+Chaque carte contient :
+1 phrase bénéfice
+
+
+3 puces livrables
+
+
+CTA “Voir l’offre”
+
+
+
+3.3 Offres (productisées, sans blabla)
+Objectif : faire choisir sans friction.
+Affichage : 3 packs + option maintenance
+Pack 1 : Launch (vitrine / landing)
+
+
+Pack 2 : Growth (CMS + SEO + contenu)
+
+
+Pack 3 : Product (web app / plateforme)
+
+
+Add-on : Care (maintenance)
+
+
+Chaque pack doit afficher
+“Idéal pour”
+
+
+Livrables concrets (5–8 items)
+
+
+Délai indicatif (si tu assumes)
+
+
+“À partir de …” (optionnel)
+
+
+CTA : “Détails” + “Démarrer”
+
+
+Important
+Les “non-inclus” doivent être visibles (évite les malentendus) :
+
+
+rédaction complète / photos / logo / hébergement / multi-langue / e-commerce / etc.
+
+
+
+3.4 Module différenciant : “Estimation en 60 secondes” (très efficace)
+Objectif : capter des leads qualifiés sans forcing.
+Fonctionnement
+Un mini configurateur :
+
+
+Type : vitrine / refonte / CMS / web app
+
+
+Pages / fonctionnalités (checklist)
+
+
+Urgence : standard / rapide / flexible
+
+
+Budget (fourchettes)
+
+
+Sortie :
+
+
+une estimation en fourchette (pas un prix ferme)
+
+
+un résumé du scope
+
+
+CTA : “Recevoir le récap + prochain pas”
+
+
+Capture email + prénom (et société optionnelle)
+
+
+Pourquoi c’est puissant
+Tu te différencies sans dire “IA”
+
+
+Tu qualifies automatiquement
+
+
+Tu réduis les messages “combien ça coûte ?”
+
+
+
+3.5 Réalisations (preuve)
+Objectif : rassurer.
+Format
+3 à 6 projets (au départ : 3 suffisent)
+
+
+Chaque carte :
+
+
+Problème → Solution (1 phrase)
+
+
+Stack / outils (petit)
+
+
+1 résultat concret (même qualitatif : “mise en ligne”, “refonte UX”, “temps de chargement réduit” si tu as mesures)
+
+
+Bouton : “Voir plus”
+
+
+Option si portfolio léger
+Mettre des démos (verticales) + mention “démonstration”.
+
+
+
+3.6 Méthode (process court, très “expert”)
+Objectif : montrer maîtrise, pas marketing.
+5 étapes
+Cadrage (objectif, audience, contraintes)
+
+
+Spec courte (pages, composants, parcours, analytics)
+
+
+Design & validation (maquette / itérations limitées)
+
+
+Dev & QA (perf, responsive, accessibilité)
+
+
+Mise en ligne + suivi
+
+
+À afficher clairement
+“Nombre d’allers-retours inclus”
+
+
+“Change request = chiffrage séparé”
+
+
+“Vous gardez la propriété du code & des accès”
+
+
+
+3.7 Bloc “Qualité mesurable” (très moderne si bien fait)
+Objectif : rassurer par des critères concrets.
+4 badges/engagements :
+Performance (Core Web Vitals / Lighthouse)
+
+
+SEO on-page (structure, metas, indexation)
+
+
+Accessibilité (bases WCAG)
+
+
+Sécurité basique (OWASP, headers, backups)
+
+
+Important : pas de promesses absolues, plutôt :
+“Objectifs visés : …”
+
+
+“Audit en fin de projet : rapport + actions”
+
+
+
+3.8 IA : uniquement comme “feature produit” (pas comme “outil interne”)
+Placement recommandé
+Une section optionnelle “Fonctionnalités avancées” (plus bas sur la page)
+
+
+Exemples de wording :
+“On peut intégrer des fonctionnalités IA utiles : recherche intelligente, génération de brouillons, assistants support, tri automatique… — selon le besoin et le budget.”
+
+
+
+3.9 FAQ (anti-objections)
+Minimum 8 questions :
+“Qu’est-ce qui est inclus exactement ?”
+
+
+“Comment se passent les validations ?”
+
+
+“Et si je change d’avis en cours ?”
+
+
+“Puis-je gérer le contenu moi-même ?”
+
+
+“SEO : qu’est-ce qui est fait / pas fait ?”
+
+
+“Hébergement : vous fournissez ?”
+
+
+“Maintenance : que couvre-t-elle ?”
+
+
+“Propriété / accès / réversibilité ?”
+
+
+
+3.10 Contact (2 chemins)
+Chemin A — Calendrier
+Call 15 min (CTA partout)
+
+
+Chemin B — Formulaire qualifiant
+ Champs :
+Nom, email, société
+
+
+Type projet (select)
+
+
+Budget (fourchettes)
+
+
+Délai (select)
+
+
+Message (optionnel)
+
+
+Consentement RGPD (si nécessaire)
+
+
+Après soumission :
+page merci + “prochaines étapes” (1,2,3)
+
+
+
+4) Éléments “bonus” qui rendent la landing vraiment mémorable (choisir 3 max)
+Mini audit gratuit (“Je te renvoie 5 points actionnables”) → lead magnet premium.
+
+
+Avant/Après (slider) sur 1 projet : page ancienne vs nouvelle.
+
+
+Tableau “Ce que vous obtenez” (livrables) très concret.
+
+
+“Ce que je refuse” (ex : dark patterns, sites lents, projets flous) → posture d’expert.
+
+
+Vidéo Loom 45s (présentation) : simple, humain, efficace.
+
+
+Roadmap type (timeline visuelle) : “Semaine 1 / 2 / 3” (sans promettre trop).
+
+
+Stack & standards (petits logos sobres) : inspire confiance (sans tomber “buzzword”).
+
+
+Garanties soft : “tout documenté”, “accès remis”, “check perf/SEO inclus”.
+
+
+
+5) Critères d’acceptation (version claire)
+
+
+Page rapide (LCP < 2.5s visé)
+
+
+
+Top recommandations (pour Webase, sans IA “marketing”)
+Estimation en 60 secondes (différenciation + qualification)
+
+
+Bloc “Qualité mesurable” (expertise visible)
+
+
+Process cadré + limites d’itérations affichées (marge + sérénité)
+
+
+1 avant/après (preuve qui marque)
+
+Lead magnet “mini audit” (augmenter conversion sans brader)
+H1 + promesse claire + CTA visible sans scroll (mobile/desktop)
+
+3 offres compréhensibles en 20 secondes
+
+Un module de qualification (estimation ou formulaire) qui filtre budget/délai/type
+
+3 preuves visibles (réalisations, process, qualité mesurable)
+
+Page légale + RGPD basique
+
+Navigation fluide + sticky CTA

@@ -1,0 +1,298 @@
+1) Stack technique (Vercel-native, premium)
+Core
+Next.js (App Router) + React + TypeScript (déploiement Vercel, SEO, routing, images, metadata). (Next.js)
+Rendering : Static-first (landing = SSG) + Server Actions / Route Handlers uniquement pour formulaire / OG.
+Styling + Design system (zéro lib “classique”)
+Tailwind CSS pour la vitesse d’intégration
+Design tokens en CSS variables (couleurs OKLCH, typo, radii, shadows, spacing)
+Radix UI Primitives (headless) uniquement si besoin (Accordion FAQ, Dialog, Popover) avec styles 100% maison (pas de kit préfait). (r3f.docs.pmnd.rs)
+Smooth scroll premium
+Lenis pour une sensation haut de gamme (scroll + inertie réglable). (lenis.darkroom.engineering)
+3D subtile “expert”
+@react-three/fiber + (option) @react-three/drei pour un élément 3D minimal (globe abstrait / forme géométrique) réactif à la souris, sans voler la vedette au contenu. (r3f.docs.pmnd.rs)
+Social cards “signature moderne”
+Vercel OG (@vercel/og) : carte Open Graph dynamique, belle, typée, quand tu partages sur LinkedIn/X. (Vercel)
+Typo (perf + identité)
+Variable fonts hébergées localement via next/font/local (pas de Google Fonts CDN), pour limiter CLS/LCP et garder un rendu premium. (Next.js)
+Analytics / perf
+Vercel Web Analytics + Vercel Speed Insights (événements CTA + Core Web Vitals). (Vercel)
+
+2) Architecture du projet (structure attendue)
+app/
+  layout.tsx          (fonts, theme, Lenis provider)
+  page.tsx            (landing)
+  opengraph-image.tsx (Vercel OG)
+  robots.ts
+  sitemap.ts
+components/
+  sections/           (Hero, Offres, Methode, Portfolio, Qualite, FAQ, Contact)
+  ui/                 (Button, Card, Section, Container, Nav, Badge)
+  three/              (Scene, Globe/Shape, CanvasWrapper)
+styles/
+  globals.css         (tokens + base)
+  tokens.css          (OKLCH + dark mode)
+lib/
+  copy.ts             (text centralisé)
+  analytics.ts        (events)
+  utils.ts
+public/
+  fonts/              (variable fonts .woff2)
+  images/             (assets optimisés)
+
+
+3) Design system (règles non négociables)
+3.1 Tokens OKLCH (dark mode impeccable)
+Couleurs définies en OKLCH pour des accents vibrants en dark mode (sans “baver”).
+Définir : --bg, --surface, --text, --muted, --border, --accent, --accent-2, --focus.
+Dark mode system-first :
+Par défaut : respecter prefers-color-scheme
+Toggle optionnel (stockage localStorage) sans casser le mode système
+3.2 Typo premium
+2 fonts max :
+1 display variable (titres)
+1 text variable (corps)
+Taille fluide via clamp() (pas de paliers abrupts)
+Interlignage généreux + tracking léger sur les titres
+3.3 Composants “signature”
+Button : 1 style principal + 1 secondaire (outline), avec micro-anim (shine/translate 1–2px)
+Card : surfaces avec border subtile + shadow soft + highlight au hover
+Section : spacing cohérent (mobile/desktop), séparateurs hairline en dégradé
+Bento grid sobre (pas “SaaS cliché”), beaucoup d’air, alignements stricts
+
+4) Lenis (smooth scroll) — spec d’implémentation
+Objectifs
+Scroll fluide “premium” sans casser l’accessibilité ni les ancres.
+Compatible animations (reveal) + navigation.
+Règles
+Lenis activé uniquement côté client (provider use client).
+Ancres : quand on clique un lien #section, utiliser la méthode Lenis pour scroller proprement.
+Respecter prefers-reduced-motion :
+Si l’utilisateur préfère réduire les animations → désactiver Lenis et revenir au scroll natif.
+Sources Lenis + exemples d’intégration Next : (lenis.darkroom.engineering)
+
+5) 3D subtile (R3F) — spec “pro” (pas gadget)
+Objectifs
+Montrer maîtrise technique en 3 secondes, sans gêner la lecture.
+Ultra léger, pas de scène lourde.
+Règles
+Un seul élément : globe abstrait / forme paramétrique / “wireframe orb”.
+Canvas contenu dans Hero (ou entre Hero et Offres), taille limitée, opacity maîtrisée.
+Interactions : rotation très douce au mouvement souris (amplitude faible).
+Perf :
+dpr={[1, 1.5]} (cap)
+frameloop="demand" si possible (ou throttling)
+éviter postprocessing lourd
+Fallback :
+Sur mobile bas de gamme / prefers-reduced-motion → remplacer par SVG statique.
+Docs R3F + exemples : (r3f.docs.pmnd.rs)
+Starter “DOM + Canvas” (pattern utile) : (GitHub)
+
+6) Vercel OG (carte sociale dynamique) — spec
+Objectifs
+Partage LinkedIn/X = carte magnifique, cohérente avec le design system.
+Règles
+Générer une image OG via opengraph-image.tsx (App Router) avec @vercel/og. (Vercel)
+Typo : réutiliser une font (ou une version) compatible pour l’OG.
+Variantes :
+/ : “Webase — Du web propre. Qui vend.”
+/offres (si tu ajoutes plus tard) : titre dynamique
+
+7) Variable fonts locales — spec perf
+Objectifs
+LCP au top, pas de flash de font moche, pas de CDN fonts.
+Règles
+Fonts en .woff2 dans public/fonts/
+Chargement via next/font/local (variable fonts recommandées). (Next.js)
+Utiliser display: swap + appliquer la class au <html> dans layout.tsx
+
+8) SEO / perf / accessibilité (côté “expert”)
+SEO
+generateMetadata / metadata files Next (title/desc/canonical)
+sitemap.ts, robots.ts
+OG/Twitter cards + image OG dynamique (Next.js)
+Perf
+Images via next/image (AVIF/WebP)
+Lazy load sections non critiques
+JS minimal : 3D strictement contenue + fallback
+Lighthouse cible : Perf/SEO/A11y “haut” (sans promettre 100 partout)
+A11y
+Focus visible, contrastes OK en dark mode
+Navigation clavier
+prefers-reduced-motion respecté (Lenis + 3D + animations)
+
+9) Tracking / analytics (sans alourdir)
+Vercel Analytics + Speed Insights (Vercel)
+Events :
+cta_hero_book_call
+cta_hero_estimate
+form_submit
+portfolio_open
+
+10) Prompt technique (copiable) pour l’IA qui génère le projet
+OBJECTIF
+Créer une landing page premium pour Webase (Next.js App Router), déployée sur Vercel, avec design system sur-mesure (pas de librairie UI pré-stylée), dark mode system-first, smooth scroll Lenis, et un élément 3D subtil (React Three Fiber) performant.
+
+
+STACK OBLIGATOIRE
+- Next.js (App Router) + TypeScript
+- Tailwind CSS + design tokens via CSS variables (couleurs en OKLCH)
+- Dark mode system-first (prefers-color-scheme) + toggle optionnel (sans casser le mode système)
+- Smooth scroll: Lenis (désactivé si prefers-reduced-motion)
+- 3D: @react-three/fiber (option @react-three/drei), un seul élément 3D subtil + fallback SVG (mobile / reduced-motion)
+- Fonts: variable fonts locales via next/font/local (pas de Google Fonts CDN)
+- SEO: metadata Next, sitemap.ts, robots.ts, OG/Twitter cards
+- Social: Vercel OG avec @vercel/og via opengraph-image.tsx
+- Analytics: Vercel Web Analytics + Speed Insights + events CTA
+
+
+CONTRAINTES DESIGN
+- Design system maison : tokens (OKLCH), typographie fluide (clamp), spacing cohérent, surfaces premium
+- Bento grid sobre, alignements stricts, beaucoup d’air
+- Micro-interactions élégantes (pas “SaaS cliché”), respect prefers-reduced-motion
+- Performance: pas d’animations lourdes, pas de postprocessing 3D, images optimisées
+
+
+LIVRABLES
+- Landing single-page + pages légales
+- Navigation sticky + ancres smooth Lenis
+- OG image dynamique (carte sociale)
+- Rapport Lighthouse/Perf visé élevé + accessibilité OK
+
+Annexe — Direction artistique, couleurs & tokens (logo #345BFF)
+Objectif
+Créer une identité tech-premium (dark mode impeccable, accents vibrants), cohérente avec une landing “agence moderne”, sans look “template SaaS”.
+
+Palette recommandée (system-first, OKLCH-friendly)
+Couleur de marque
+Brand / Primary : #345BFF (logo)
+
+
+Neutrals (dark-first)
+Background (dark) : #06070B (presque noir, pas gris)
+
+
+Surface 1 : #0B0E17 (cards, nav)
+
+
+Surface 2 : #10162A (hover, sections alternées)
+
+
+Border : rgba(255,255,255,0.08) (hairline premium)
+
+
+Text primary : #EAF0FF
+
+
+Text secondary : rgba(234,240,255,0.72)
+
+
+Accents (secondaires, subtils)
+Accent violet (pour gradients) : #7C3AED (à petite dose)
+
+
+Accent cyan (micro highlights) : #22D3EE (rare, pour “tech pop”)
+
+
+Règle : 80% neutrals / 20% accent. Le bleu #345BFF doit rester “signature”, pas omniprésent.
+
+Usage par sections (concret)
+Hero
+Fond : gradient dark + halo bleu très doux
+
+
+radial-gradient(60% 60% at 50% 20%, rgba(52,91,255,0.22) 0%, rgba(52,91,255,0) 60%)
+
+
+Title : texte blanc bleuté
+
+
+CTA primaire : brand solid + highlight léger
+
+
+CTA secondaire : outline + border hairline
+
+
+Offres / Cards
+Fond : Surface 1 (#0B0E17)
+
+
+Hover : Surface 2 (#10162A) + border accent très discret (rgba(52,91,255,0.25))
+
+
+Badges : texte bleu + fond bleu très transparent (rgba(52,91,255,0.10))
+
+
+“Qualité mesurable” / Badges
+Icon stroke : #345BFF
+
+
+Background badge : rgba(52,91,255,0.08) (subtil)
+
+
+Border : rgba(52,91,255,0.18)
+
+
+FAQ
+Accordion : Surface 1 + separators hairline (ultra clean)
+
+
+Focus ring : rgba(52,91,255,0.45) (visible, pro)
+
+
+Contact
+Section alternée : fond légèrement différent (Surface 2)
+
+
+Input focus : border rgba(52,91,255,0.45) + shadow 0 0 0 4px rgba(52,91,255,0.18)
+
+
+
+Tokens CSS (spéc à donner à l’IA)
+À intégrer dans styles/tokens.css (valeurs indicatives, ajustables).
+:root {
+  /* Brand */
+  --brand: #345bff;
+
+  /* Neutrals (light mode optionnel) */
+  --bg: #f7f8ff;
+  --surface-1: #ffffff;
+  --surface-2: #f1f4ff;
+  --text: #0b1020;
+  --text-muted: rgba(11,16,32,0.72);
+  --border: rgba(11,16,32,0.12);
+
+  /* Focus */
+  --focus: rgba(52, 91, 255, 0.45);
+  --focus-soft: rgba(52, 91, 255, 0.18);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #06070b;
+    --surface-1: #0b0e17;
+    --surface-2: #10162a;
+    --text: #eaf0ff;
+    --text-muted: rgba(234, 240, 255, 0.72);
+    --border: rgba(255, 255, 255, 0.08);
+
+    --focus: rgba(52, 91, 255, 0.55);
+    --focus-soft: rgba(52, 91, 255, 0.20);
+  }
+}
+
+
+Règles de design (pour éviter le rendu “classique”)
+Pas de dégradés arc-en-ciel : seulement du halo “brand” très doux + un accent secondaire rare.
+
+
+Hairlines (1px) + shadows soft : aspect premium.
+
+
+Contrastes maîtrisés : texte jamais 100% blanc partout (utiliser --text-muted).
+
+
+Un seul élément “wow” : le 3D + halo. Tout le reste reste sobre.
+
+
+Focus states visibles (expertise + accessibilité).
+
