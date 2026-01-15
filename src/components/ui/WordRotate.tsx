@@ -30,7 +30,7 @@ export function WordRotate({ words, className }: WordRotateProps) {
           animate={{ y: "0%" }}
           exit={{ y: "-100%" }}
           transition={{ duration: 0.5, ease: "easeInOut" }}
-          className="absolute left-0 top-0 whitespace-nowrap text-brand"
+          className="absolute left-0 top-0 w-full whitespace-nowrap"
         >
           {words[index]}
         </motion.span>

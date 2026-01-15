@@ -5,10 +5,10 @@
 
   /* Swiss / Modernist Palette (Light Mode Default) */
   --bg: #ffffff;
-  --surface-1: #f4f4f5; /* Very subtle grey for contrast areas */
+  --surface-1: #f3f3f5; /* Clean light gray */
   --surface-2: #e4e4e7; /* Borders / Dividers */
   
-  --text: #000000;
+  --text: #09090b; /* Deep Zinc Black, softer than #000 */
   --text-muted: #52525b;
   --border: #e4e4e7;
 
@@ -17,20 +17,17 @@
   
   /* Radii - Sharp / Swiss */
   --radius-sm: 0px;
-  --radius-md: 2px; /* Very slight softening, or 0px for brutalist */
+  --radius-md: 2px;
   --radius-lg: 4px;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    /* Optional: High contrast Dark Mode (if needed, but user wants White focus) */
-    /* keeping it functional but secondary to the strong light identity */
-    --bg: #09090b;
-    --surface-1: #18181b;
-    --surface-2: #27272a;
+.dark {
+  /* Premium Dark Mode */
+  --bg: #09090b; /* Zinc 950 */
+  --surface-1: #18181b; /* Zinc 900 */
+  --surface-2: #27272a; /* Zinc 800 */
 
-    --text: #ffffff;
-    --text-muted: #a1a1aa;
-    --border: #27272a;
-  }
+  --text: #fafafa;
+  --text-muted: #a1a1aa;
+  --border: #27272a;
 }

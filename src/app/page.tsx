@@ -1,3 +1,5 @@
+// No formatting change needed, just checking context. 
+// Actually I will verify page.tsx first.
 import { Button } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
 import { Section } from "@/components/ui/Section";
@@ -6,22 +8,24 @@ import { copy } from "@/lib/copy";
 import { Card } from "@/components/ui/Card";
 import { WordRotate } from "@/components/ui/WordRotate";
 import { GravityGrid } from "@/components/three/GravityGrid";
+import { FloatingParticles } from "@/components/three/FloatingParticles";
 
 export default function Home() {
   return (
     <main className="flex-1 overflow-x-hidden">
       {/* Hero Section */}
-      <Section className="pt-20 pb-32 flex flex-col items-center justify-center min-h-[85vh] relative overflow-visible">
+      <Section className="pt-32 md:pt-48 pb-32 flex flex-col items-center justify-start min-h-[100dvh] relative overflow-hidden">
         {/* Background Gradient Orb */}
-        <div className="absolute inset-0 -z-20 overflow-hidden">
+        <div className="absolute inset-0 -z-20 overflow-hidden pointer-events-none">
           {/* Increased opacity for mobile visibility */}
-          <div className="absolute top-[-5%] md:top-[-10%] left-1/2 -translate-x-1/2 w-[600px] md:w-[1000px] h-[400px] md:h-[600px] bg-brand/10 md:bg-brand/5 blur-[80px] md:blur-[120px] rounded-full mix-blend-normal opacity-80 md:opacity-50 dark:opacity-20 pointer-events-none" />
+          <div className="absolute top-[-10%] left-1/2 -translate-x-1/2 w-[800px] md:w-[1400px] h-[600px] md:h-[1000px] bg-brand/10 md:bg-brand/5 blur-[80px] md:blur-[120px] rounded-full mix-blend-normal opacity-80 md:opacity-50 dark:opacity-20" />
         </div>
 
         {/* 3D Scene Background (Gravity Grid) */}
         <div className="absolute inset-0 -z-10 opacity-60 pointer-events-none">
           <Scene className="w-full h-full">
             <GravityGrid />
+            <FloatingParticles />
           </Scene>
         </div>
 
@@ -33,11 +37,11 @@ export default function Home() {
 
           <h1 className="text-5xl md:text-[6rem] font-bold tracking-tight text-text leading-[1.0] md:leading-[1.1] max-w-6xl mx-auto">
             Sites Web & Apps.<br />
-            {/* Adjusted spacing: Bigger gap-y (mt-6) and bigger text on mobile */}
-            <span className="flex flex-wrap items-baseline justify-center gap-x-4 md:gap-x-6 mt-6 md:mt-4 gap-y-2 md:gap-y-6">
+            {/* Mobile: Flex-Col + Centered. Desktop: Flex-Row + Baseline. */}
+            <span className="flex flex-col md:flex-row items-center md:items-baseline justify-center gap-x-6 mt-6 md:mt-4 gap-y-2 md:gap-y-6">
               <span className="text-text-muted font-medium italic font-serif text-4xl md:text-7xl">Simplement</span>
               <WordRotate
-                className="text-brand text-4xl md:text-7xl translate-y-[1px] md:translate-y-[5px]"
+                className="text-brand text-center md:text-left text-4xl md:text-7xl md:translate-y-[5px]"
                 words={["Premium", "Impactants", "Sur-mesure", "Performants"]}
               />
             </span>
