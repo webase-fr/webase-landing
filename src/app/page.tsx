@@ -1,65 +1,207 @@
-import Image from "next/image";
+import { Button } from "@/components/ui/Button";
+import { Container } from "@/components/ui/Container";
+import { Section } from "@/components/ui/Section";
+import { Scene } from "@/components/three/Scene";
+import { copy } from "@/lib/copy";
+import { Card } from "@/components/ui/Card";
+import { WordRotate } from "@/components/ui/WordRotate";
+import { GravityGrid } from "@/components/three/GravityGrid";
 
 export default function Home() {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
+    <main className="flex-1 overflow-x-hidden">
+      {/* Hero Section */}
+      <Section className="pt-20 pb-32 flex flex-col items-center justify-center min-h-[85vh] relative overflow-visible">
+        {/* Background Gradient Orb */}
+        <div className="absolute inset-0 -z-20 overflow-hidden">
+          {/* Increased opacity for mobile visibility */}
+          <div className="absolute top-[-5%] md:top-[-10%] left-1/2 -translate-x-1/2 w-[600px] md:w-[1000px] h-[400px] md:h-[600px] bg-brand/10 md:bg-brand/5 blur-[80px] md:blur-[120px] rounded-full mix-blend-normal opacity-80 md:opacity-50 dark:opacity-20 pointer-events-none" />
+        </div>
+
+        {/* 3D Scene Background (Gravity Grid) */}
+        <div className="absolute inset-0 -z-10 opacity-60 pointer-events-none">
+          <Scene className="w-full h-full">
+            <GravityGrid />
+          </Scene>
+        </div>
+
+        <Container className="text-center space-y-8 relative z-10">
+          <div className="inline-flex items-center rounded-full border border-border bg-surface-1 px-3 py-1 text-sm font-medium text-text-muted mb-4">
+            <span className="flex h-2 w-2 rounded-full bg-brand mr-2"></span>
+            Agence Web & Product Next.js
+          </div>
+
+          <h1 className="text-5xl md:text-[6rem] font-bold tracking-tight text-text leading-[1.0] md:leading-[1.1] max-w-6xl mx-auto">
+            Sites Web & Apps.<br />
+            {/* Adjusted spacing: Bigger gap-y (mt-6) and bigger text on mobile */}
+            <span className="flex flex-wrap items-baseline justify-center gap-x-4 md:gap-x-6 mt-6 md:mt-4 gap-y-2 md:gap-y-6">
+              <span className="text-text-muted font-medium italic font-serif text-4xl md:text-7xl">Simplement</span>
+              <WordRotate
+                className="text-brand text-4xl md:text-7xl translate-y-[1px] md:translate-y-[5px]"
+                words={["Premium", "Impactants", "Sur-mesure", "Performants"]}
+              />
+            </span>
           </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
+
+          <p className="text-lg md:text-2xl text-text-muted max-w-4xl mx-auto leading-relaxed font-normal text-balance mt-6 md:mt-6 px-2 md:px-0">
+            <span className="md:hidden">Transformez votre vision en réalité digitale. Rapidement.</span>
+            <span className="hidden md:inline">{copy.hero.subtitle}</span>
           </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
-    </div>
+
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-6">
+            <Button size="lg" className="h-14 px-8 text-lg">{copy.hero.ctaPrimary}</Button>
+            <Button variant="outline" size="lg" className="h-14 px-8 text-lg bg-surface-1/50 backdrop-blur">{copy.hero.ctaSecondary}</Button>
+          </div>
+        </Container>
+      </Section>
+
+      {/* Services Section */}
+      <Section className="bg-bg border-t border-border">
+        <Container>
+          <div className="mb-16 max-w-xl">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4 tracking-tight">{copy.services.title}</h2>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {copy.services.items.map((item, idx) => (
+              <Card key={idx} className="h-full flex flex-col p-8 bg-surface-1 shadow-sm border-border hover:border-brand/40">
+                <div className="w-10 h-10 bg-surface-2 rounded-sm mb-6 flex items-center justify-center text-brand font-bold text-lg">
+                  {idx + 1}
+                </div>
+                <h3 className="text-xl font-bold mb-3">{item.title}</h3>
+                <p className="text-text-muted mb-8 flex-grow leading-relaxed">{item.description}</p>
+                <div className="border-t border-border/50 pt-6">
+                  <ul className="space-y-3">
+                    {item.features.map((feature, fIdx) => (
+                      <li key={fIdx} className="flex items-center text-sm font-medium text-text-muted">
+                        <span className="w-1 h-1 bg-brand mr-3" />
+                        {feature}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </Card>
+            ))}
+          </div>
+        </Container>
+      </Section>
+
+      {/* Offres Section */}
+      <Section className="bg-surface-1/50 border-t border-border">
+        <Container>
+          <div className="mb-16 text-center">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4 tracking-tight">{copy.offres.title}</h2>
+            <p className="text-text-muted">Des forfaits clairs. Pas de surprise.</p>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 items-start">
+            {copy.offres.items.map((item, idx) => (
+              <Card key={idx} className={
+                `flex flex-col p-8 relative transition-all duration-300 ${idx === 1
+                  ? 'border-brand bg-bg shadow-lg shadow-brand/5 ring-1 ring-brand/20 z-10 scale-[1.02]'
+                  : 'bg-surface-1 hover:border-text/20'
+                }`
+              } noHover={idx === 1}>
+                {idx === 1 && (
+                  <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-brand text-white px-3 py-1 text-xs font-bold uppercase tracking-wider">
+                    Recommandé
+                  </div>
+                )}
+                <div className="mb-8">
+                  <h3 className="text-xl font-bold mb-2">{item.name}</h3>
+                  <div className="text-4xl font-bold text-text mb-2 tracking-tight">{item.price}</div>
+                  <p className="text-sm text-text-muted/80 font-medium">{item.tagline}</p>
+                </div>
+                <ul className="space-y-4 mb-8 flex-grow">
+                  {item.features.map((feature, fIdx) => (
+                    <li key={fIdx} className="flex items-start text-sm text-text-muted">
+                      <svg className="w-5 h-5 text-brand mr-3 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                      </svg>
+                      {feature}
+                    </li>
+                  ))}
+                </ul>
+                <Button variant={idx === 1 ? 'primary' : 'outline'} className="w-full">
+                  Choisir {item.name}
+                </Button>
+              </Card>
+            ))}
+          </div>
+        </Container>
+      </Section>
+
+      {/* Realisations Section */}
+      <Section className="bg-bg border-y border-border">
+        <Container>
+          <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-4">
+            <div>
+              <h2 className="text-3xl md:text-4xl font-bold mb-2 tracking-tight">{copy.realisations.title}</h2>
+              <p className="text-text-muted">Nos derniers déploiements.</p>
+            </div>
+            <Button variant="outline">Voir tout le portfolio</Button>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {copy.realisations.items.map((project, idx) => (
+              <div key={idx} className="group relative bg-surface-1 aspect-[4/3] flex flex-col justify-between p-6 border border-border hover:border-brand hover:shadow-lg transition-all cursor-pointer">
+                {/* Visual placeholder for "No Image" style */}
+                <div className="absolute top-6 right-6 w-12 h-12 border-2 border-surface-2 rounded-full flex items-center justify-center group-hover:border-brand transition-colors">
+                  <svg className="w-5 h-5 text-text-muted group-hover:text-brand" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                  </svg>
+                </div>
+
+                <div className="mt-auto">
+                  <div className="flex gap-2 mb-4 flex-wrap">
+                    {project.stack.slice(0, 2).map((tech, tIdx) => (
+                      <span key={tIdx} className="text-[10px] uppercase font-bold tracking-wider px-2 py-1 bg-bg text-text border border-border">
+                        {tech}
+                      </span>
+                    ))}
+                  </div>
+                  <h3 className="text-xl font-bold mb-1 group-hover:text-brand transition-colors">{project.title}</h3>
+                  <p className="text-sm text-text-muted">{project.result}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </Container>
+      </Section>
+
+      {/* Methode Section */}
+      <Section className="bg-surface-1/50">
+        <Container>
+          <div className="text-center mb-20">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">{copy.methode.title}</h2>
+          </div>
+          <div className="max-w-4xl mx-auto space-y-0 relative border-l border-border ml-4 md:ml-0 pl-10 md:pl-0">
+            {copy.methode.steps.map((step, idx) => (
+              <div key={idx} className="relative pb-16 last:pb-0 md:pl-16">
+                {/* Timeline dot */}
+                <div className="absolute left-[-41px] md:left-0 top-0 w-3 h-3 bg-brand rounded-full -translate-x-[50%] z-10" />
+
+                <h3 className="text-lg font-bold text-brand mb-1 tracking-widest uppercase text-xs">{step.number} — {step.title}</h3>
+                <p className="text-xl md:text-2xl font-medium text-text mt-2 max-w-2xl">{step.description}</p>
+              </div>
+            ))}
+          </div>
+        </Container>
+      </Section>
+
+      {/* Contact / CTA Section */}
+      <Section className="py-32 flex flex-col items-center text-center bg-bg border-t border-border">
+        <Container className="max-w-2xl">
+          <h2 className="text-4xl md:text-6xl font-bold mb-8 tracking-tighter text-balance">On commence quand ?</h2>
+          <p className="text-lg text-text-muted mb-10 max-w-lg mx-auto">
+            Pas de forcing, juste une discussion claire sur vos besoins et la faisabilité.
+          </p>
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+            <Button size="lg" className="h-16 px-10 text-xl w-full sm:w-auto shadow-xl shadow-brand/10">Réserver un appel</Button>
+            <Button variant="outline" size="lg" className="h-16 px-10 text-xl w-full sm:w-auto bg-surface-1">m&apos;écrire un email</Button>
+          </div>
+        </Container>
+      </Section>
+
+      {/* More sections to follow */}
+    </main>
   );
 }

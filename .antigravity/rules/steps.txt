@@ -1,0 +1,114 @@
+Socle projet
+
+Créer l’arbo components/ui, components/sections, styles/, lib/
+
+Ajouter styles/tokens.css + brancher dans globals.css
+
+Fonts locales
+
+Mettre 2 variable fonts en public/fonts 
+
+Config next/font/local dans app/layout.tsx
+
+Theme system-first
+
+Appliquer tokens dark/light via prefers-color-scheme
+
+(Option) toggle manuel + persistance propre
+
+Layout global
+
+app/layout.tsx : structure, nav placeholder, footer placeholder
+
+Container, grid, spacing standards
+
+Composants UI “maison”
+
+Button (primary/secondary), Card, Badge, Section, Container, Separator, Heading
+
+États : hover/focus/disabled + a11y focus ring
+
+Structure de page (sections)
+
+Monter app/page.tsx avec sections vides dans l’ordre :
+Hero → Offres → Réalisations → Méthode → Qualité → FAQ → Contact → Footer
+
+Lenis (smooth scroll)
+
+Ajouter provider client + ancres smooth
+
+Désactiver si prefers-reduced-motion
+
+3D subtile (R3F)
+
+Ajouter components/three/* + canvas hero
+
+Fallback SVG + désactivation mobile/reduced-motion
+
+Perf guard (dpr cap / frameloop)
+
+Copy & contenu
+
+Centraliser texte dans lib/copy.ts
+
+Remplir chaque section + CTA + FAQ
+
+Formulaire
+
+Contact form + validation minimale
+
+Server Action / route handler + envoi email (Resend/SMTP)
+
+Anti-spam (Turnstile) si tu veux
+
+Analytics
+
+Vercel Web Analytics + Speed Insights
+
+Events CTA + submit form
+
+SEO complet
+
+Metadata (title/desc/canonical)
+
+sitemap.ts, robots.ts
+
+OG/Twitter meta
+
+Vercel OG
+
+app/opengraph-image.tsx avec design cohérent tokens/fonts
+
+Perf pass
+
+Optimiser images (next/image)
+
+Vérifier bundle (3D isolée, lazy si besoin)
+
+Lighthouse check (perf/SEO/a11y)
+
+Accessibilité
+
+Navigation clavier, focus states, contrastes dark
+
+prefers-reduced-motion (Lenis + 3D + animations)
+
+Responsive final
+
+Mobile/tablette/desktop : spacing, bento, nav, hero, 3D
+
+Pages légales
+
+Mentions légales + politique de confidentialité + (cookies si tracking)
+
+Previews & QA
+
+Push → preview Vercel, corrections
+
+Test liens, formulaire, OG share, scroll, dark mode
+
+Prod
+
+Domain + env vars
+
+Déploiement prod + vérif final (OG + analytics + perf)
