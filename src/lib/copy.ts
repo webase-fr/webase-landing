@@ -6,7 +6,7 @@ export const copy = {
     ctaSecondary: "Voir des exemples",
   },
   services: {
-    title: "Ce qu'on fait",
+    title: "Votre vision ? Nous la rendons *réelle*.",
     items: [
       {
         title: "Sites Vitrines & Landing Pages",
@@ -32,48 +32,26 @@ export const copy = {
     title: "Nos Offres",
     items: [
       {
-        name: "Launch",
-        tagline: "Idéal pour valider une idée ou lancer une marque.",
-        price: "À partir de 1500€",
-        features: ["Landing Page Single-page", "Design System Base", "Intégration Analytics", "Délai: ~2 semaines"],
+        name: "Essentiel",
+        tagline: "Pour lancer votre activité.",
+        price: "490€",
+        features: ["Page de vente unique", "Design Pro", "Adapté Mobile", "Référencement inclus"],
       },
       {
-        name: "Growth",
-        tagline: "Idéal pour les PME qui veulent du trafic et de l'autonomie.",
-        price: "À partir de 3000€",
-        features: ["Site multi-pages (CMS)", "Stratégie SEO technique", "Blog / Ressources", "Délai: ~4 semaines"],
+        name: "Pro",
+        tagline: "Pour développer votre visibilité.",
+        price: "990€",
+        features: ["Site complet (5 pages)", "Blog / Actualités", "Interface de gestion facile", "Formation incluse"],
       },
       {
-        name: "Product",
-        tagline: "Idéal pour les startups et outils métiers complexes.",
+        name: "Sur-Mesure",
+        tagline: "Pour les projets ambitieux.",
         price: "Sur devis",
-        features: ["Architecture sur-mesure", "React / Next.js App", "Scalabilité & Sécurité", "Délai: ~6+ semaines"],
+        features: ["Architecture complexe", "Fonctionnalités avancées", "Espace membre", "Connexion API"],
       },
     ],
   },
-  realisations: {
-    title: "Réalisations",
-    items: [
-      {
-        title: "Refonte E-commerce Bio",
-        problem: "Site lent et conversion faible.",
-        result: "+40% de ventes en 3 mois.",
-        stack: ["Shopify Headless", "Next.js"],
-      },
-      {
-        title: "SaaS Dashboard Immo",
-        problem: "Gestion désordonnée sur Excel.",
-        result: "Gain de 15h/semaine pour l'équipe.",
-        stack: ["React", "Node.js", "PostgreSQL"],
-      },
-      {
-        title: "Landing Agence Voyage",
-        problem: "Design daté, pas de mobile.",
-        result: "Trafic mobile x3.",
-        stack: ["Next.js", "Tailwind", "Framer Motion"],
-      },
-    ],
-  },
+
   methode: {
     title: "Notre Méthode",
     steps: [
@@ -96,6 +74,64 @@ export const copy = {
         number: "04",
         title: "Livraison",
         description: "Mise en ligne, formation et remise des accès complets.",
+      },
+    ],
+  },
+  ai: {
+    title: "L'Intelligence Artificielle, invisible mais partout.",
+    subtitle: "Ne vous contentez pas d'un site statique. Intégrez l'IA pour automatiser, personnaliser et accélérer votre business.",
+    features: [
+      {
+        title: "Support Client Autonome",
+        description: "Des assistants qui comprennent votre business et répondent 24/7.",
+      },
+      {
+        title: "Génération de Contenu",
+        description: "Articles, fiches produits, posts sociaux : tout est prêt à valider.",
+      },
+      {
+        title: "Analyse de Données",
+        description: "Transformez vos chiffres en recommandations stratégiques claires.",
+      },
+    ],
+  },
+  faq: {
+    title: "Questions Fréquentes",
+    items: [
+      {
+        question: "Combien de temps avant la mise en ligne ?",
+        answer: "Pour l'offre Essentiel, comptez 5 à 7 jours ouvrés. Pour l'offre Pro, environ 2 à 3 semaines selon la complexité et vos retours.",
+      },
+      {
+        question: "Suis-je propriétaire de mon site ?",
+        answer: "À 100%. Une fois livré, vous avez tous les accès, le code source et la propriété intellectuelle complète.",
+      },
+      {
+        question: "Et si j'ai besoin de modifier quelque chose après ?",
+        answer: "Nos sites sont conçus pour être mis à jour facilement. Pour des changements majeurs, nous restons disponibles à un tarif horaire préférentiel.",
+      },
+    ],
+  },
+  techStack: [
+    "Next.js", "React", "TypeScript", "Tailwind CSS", "Vercel", "Supabase", "Shopify", "Framer Motion", "OpenAI"
+  ],
+  testimonials: {
+    title: "Ce qu'ils disent de nous",
+    items: [
+      {
+        text: "Une équipe ultra réactive. Notre site est passé de 'moyen' à 'exceptionnel' en 3 semaines. Le design fait toute la différence.",
+        author: "Thomas D.",
+        role: "CEO, TechStart",
+      },
+      {
+        text: "J'avais peur que ce soit compliqué à gérer, mais le CMS est super simple. Et le site charge instantanément.",
+        author: "Sarah L.",
+        role: "Fondatrice, Mode&Co",
+      },
+      {
+        text: "L'intégration de l'IA pour notre support client a divisé nos tickets par deux. Investissement rentabilisé en 1 mois.",
+        author: "Marc R.",
+        role: "Directeur Ops, LogiFlow",
       },
     ],
   },
