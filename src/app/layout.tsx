@@ -1,9 +1,10 @@
 import type { Metadata } from "next";
-import { Outfit } from "next/font/google";
+import { Outfit, Figtree } from "next/font/google";
 import "./globals.css";
 import "../styles/tokens.css";
 
-const outfit = Outfit({ subsets: ["latin"] });
+const outfit = Outfit({ subsets: ["latin"], variable: "--font-outfit" });
+const figtree = Figtree({ subsets: ["latin"], variable: "--font-figtree" });
 
 import { Navbar } from "@/components/layout/Navbar";
 import { SmoothScroll } from "@/components/ui/SmoothScroll";
@@ -23,7 +24,7 @@ export default function RootLayout({
   return (
     <html lang="fr" suppressHydrationWarning>
       <body
-        className={`${outfit.className} antialiased bg-bg text-text selection:bg-brand selection:text-white`}
+        className={`${outfit.variable} ${figtree.variable} font-sans antialiased bg-bg text-text selection:bg-brand selection:text-white`}
       >
         <ThemeProvider
           attribute="class"

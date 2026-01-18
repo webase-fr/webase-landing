@@ -1,6 +1,6 @@
 export const copy = {
   hero: {
-    title: "Sites Web & Apps.",
+    title: "Agence Web & Mobile.",
     subtitle: "Modernisez votre image. Inspirez confiance. Gagnez de nouveaux clients. Une refonte complète de votre présence en ligne, rapide et sans compromis.",
     ctaPrimary: "Lancer la transformation",
     ctaSecondary: "Voir des exemples",
@@ -12,16 +12,19 @@ export const copy = {
         title: "Sites Vitrines & Landing Pages",
         description: "Conversion + Crédibilité. Pour présenter votre activité avec impact.",
         features: ["Design unique", "Pack SEO base", "Responsive parfait"],
+        image: "/images/shape-vitrine.png",
       },
       {
         title: "Sites Dynamiques / CMS",
         description: "Autonomie + SEO. Pour gérer votre contenu sans développeur.",
         features: ["CMS sur-mesure", "Blog / Actualités", "Formation admin"],
+        image: "/images/shape-cms.png",
       },
       {
         title: "Web Apps / Plateformes",
         description: "MVP & Outils internes. Pour digitaliser vos processus métier.",
         features: ["Dashboard", "Auth utilisateurs", "API & Intégrations"],
+        image: "/images/shape-app.png",
       },
     ],
   },
