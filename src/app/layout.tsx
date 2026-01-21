@@ -7,7 +7,6 @@ const outfit = Outfit({ subsets: ["latin"], variable: "--font-outfit" });
 const figtree = Figtree({ subsets: ["latin"], variable: "--font-figtree" });
 
 import { Navbar } from "@/components/layout/Navbar";
-import { SmoothScroll } from "@/components/ui/SmoothScroll";
 
 export const metadata: Metadata = {
   title: "Webase | Du web propre. Qui vend.",
@@ -32,9 +31,9 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <SmoothScroll />
+
           <Navbar />
-          <div className="min-h-screen flex flex-col pt-16">
+          <div className="min-h-screen flex flex-col pt-28">
             {children}
           </div>
         </ThemeProvider>

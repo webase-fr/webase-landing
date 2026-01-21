@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
 import { Section } from "@/components/ui/Section";
 import { motion } from "framer-motion";
+import Link from "next/link";
 
 export function CTASection() {
   return (
@@ -24,25 +25,29 @@ export function CTASection() {
           On commence <span className="font-serif italic font-medium text-white">maintenant</span> ?
         </h2>
 
-        <p className="text-xl md:text-2xl text-text-muted mb-12 max-w-2xl mx-auto leading-relaxed">
+        <p className="text-xl md:text-2xl text-white/70 mb-12 max-w-2xl mx-auto leading-relaxed">
           Discutons de votre projet. Sans engagement, juste de la valeur.
         </p>
 
         <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
-          <Button
-            size="lg"
-            className="h-16 px-10 text-xl w-full sm:w-auto bg-brand hover:bg-brand-light text-white transition-all duration-300"
-          >
-            Réserver un appel
-          </Button>
+          <Link href="/estimation">
+            <Button
+              size="lg"
+              className="h-16 px-10 text-xl w-full sm:w-auto bg-brand hover:bg-brand-light text-white transition-all duration-300"
+            >
+              Réserver un appel
+            </Button>
+          </Link>
 
-          <Button
-            variant="outline"
-            size="lg"
-            className="h-16 px-10 text-xl w-full sm:w-auto border-white/20 bg-transparent text-white hover:bg-white/10 hover:border-white/40 backdrop-blur-sm"
-          >
-            M&apos;écrire par email
-          </Button>
+          <Link href="/contact">
+            <Button
+              variant="outline"
+              size="lg"
+              className="h-16 px-10 text-xl w-full sm:w-auto border-white/20 bg-transparent text-white hover:bg-white/10 hover:border-white/40 backdrop-blur-sm"
+            >
+              M&apos;écrire par email
+            </Button>
+          </Link>
         </div>
       </Container>
     </Section>

@@ -3,13 +3,17 @@
 import { Container } from "@/components/ui/Container";
 import { Button } from "@/components/ui/Button";
 import { ThemeToggle } from "./ThemeToggle";
+import { cn } from "@/lib/utils";
 import Image from "next/image";
 import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
 import { AnimatePresence, motion } from "framer-motion";
 
+import Link from "next/link";
+
 export function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
 
   // Lock scroll when menu is open
   useEffect(() => {
@@ -20,55 +24,76 @@ export function Navbar() {
     }
   }, [isOpen]);
 
+  // Handle scroll effect
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 20);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    handleScroll(); // Check on mount
+
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   const navLinks = [
-    { href: "#services", label: "Services" },
-    { href: "#offres", label: "Offres" },
-    { href: "#realisations", label: "Projets" },
-    { href: "#methode", label: "Méthode" },
+    { href: "/", label: "Accueil" },
+    { href: "/services", label: "Services" },
+    { href: "/offres", label: "Offres" },
+    { href: "/methode", label: "Méthode" },
+    { href: "/blog", label: "Blog" },
   ];
 
   return (
     <>
-      <header className="fixed top-0 left-0 right-0 z-50 border-b border-border/40 bg-bg/80 backdrop-blur-md">
-        <Container className="flex h-16 items-center justify-between">
-          <div className="flex items-end gap-2">
-            {/* Logo - Smaller, aligned at bottom */}
+      <header
+        className={cn(
+          "fixed top-0 left-0 right-0 z-50 transition-all duration-300 ease-in-out border-b",
+          isScrolled
+            ? "bg-white/80 dark:bg-bg/80 backdrop-blur-md border-border h-20"  // Scrolled State
+            : "bg-white dark:bg-bg border-transparent h-28" // Top State (Taller, Transparent Border, Solid)
+        )}
+      >
+        <Container className="flex h-full items-center justify-between">
+          <Link href="/" className="flex items-center gap-2 group">
+            {/* Logo - Adjusted Size (36px) & Visual Alignment */}
             <Image
-              src="/logo_webase.svg"
+              src="/logo-webase.svg"
               alt="Webase Logo"
-              width={32}
-              height={24}
-              className="object-contain mb-[2px]" // Slight lift to match baseline
+              width={130}
+              height={50}
+              className="object-contain transition-transform group-hover:scale-105 mb-1"
             />
-            <span className="text-2xl font-soft tracking-tight leading-none">
-              Webase<span className="text-brand">.</span>
-            </span>
-          </div>
+          </Link>
 
-          {/* Desktop Nav */}
-          <nav className="hidden md:flex items-center gap-8 text-sm font-medium">
+          {/* Desktop Nav - Scaled Up Text */}
+          <nav className="hidden md:flex items-center gap-10 text-base font-medium">
             {navLinks.map((link) => (
-              <a
+              <Link
                 key={link.href}
                 href={link.href}
                 className="text-text-muted hover:text-text transition-colors"
               >
                 {link.label}
-              </a>
+              </Link>
             ))}
           </nav>
 
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-6">
             <ThemeToggle />
 
             {/* Desktop CTAs */}
             <div className="hidden md:flex items-center gap-4">
-              <Button variant="outline" size="sm">
-                Estimation
-              </Button>
-              <Button size="sm">
-                Contact
-              </Button>
+              <Link href="/estimation">
+                <Button variant="outline" className="text-base px-6">
+                  Estimation
+                </Button>
+              </Link>
+              <Link href="/contact">
+                <Button className="text-base px-6">
+                  Contact
+                </Button>
+              </Link>
             </div>
 
             {/* Mobile Toggle */}
@@ -77,7 +102,7 @@ export function Navbar() {
               onClick={() => setIsOpen(!isOpen)}
               aria-label="Toggle menu"
             >
-              {isOpen ? <X size={24} /> : <Menu size={24} />}
+              {isOpen ? <X size={28} /> : <Menu size={28} />}
             </button>
           </div>
         </Container>
@@ -91,7 +116,7 @@ export function Navbar() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
             transition={{ duration: 0.2 }}
-            className="fixed inset-0 z-40 bg-bg/95 backdrop-blur-xl pt-24 pb-8 px-6 md:hidden flex flex-col overflow-y-auto"
+            className="fixed inset-0 z-40 bg-bg/95 backdrop-blur-xl pt-32 pb-8 px-6 md:hidden flex flex-col overflow-y-auto"
           >
             <nav className="flex flex-col gap-6">
               {navLinks.map((link, idx) => (
@@ -115,12 +140,16 @@ export function Navbar() {
               transition={{ delay: 0.3 }}
               className="mt-auto flex flex-col gap-4 pt-12"
             >
-              <Button size="lg" className="w-full text-lg" onClick={() => setIsOpen(false)}>
-                Demander un devis
-              </Button>
-              <Button variant="outline" size="lg" className="w-full text-lg" onClick={() => setIsOpen(false)}>
-                Estimation de projet
-              </Button>
+              <Link href="/estimation" onClick={() => setIsOpen(false)} className="w-full">
+                <Button size="lg" className="w-full text-lg">
+                  Demander un devis
+                </Button>
+              </Link>
+              <Link href="/contact" onClick={() => setIsOpen(false)} className="w-full">
+                <Button variant="outline" size="lg" className="w-full text-lg">
+                  Nous contacter
+                </Button>
+              </Link>
             </motion.div>
           </motion.div>
         )}

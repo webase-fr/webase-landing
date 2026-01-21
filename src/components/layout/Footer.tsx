@@ -2,6 +2,7 @@
 
 import { Container } from "@/components/ui/Container";
 import Image from "next/image";
+import Link from "next/link";
 
 export function Footer() {
   return (
@@ -10,7 +11,7 @@ export function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-12 md:gap-8 mb-16">
           {/* Brand Column */}
           <div className="md:col-span-1 space-y-4">
-            <div className="flex items-end gap-2">
+            <Link href="/" className="flex items-end gap-2 group">
               <Image
                 src="/logo_webase.svg"
                 alt="Webase Logo"
@@ -18,12 +19,12 @@ export function Footer() {
                 height={24}
                 className="object-contain mb-[2px]"
               />
-              <span className="text-2xl font-soft tracking-tight leading-none text-text">
+              <span className="text-2xl font-soft tracking-tight leading-none text-text group-hover:text-brand transition-colors">
                 Webase<span className="text-brand">.</span>
               </span>
-            </div>
+            </Link>
             <p className="text-text-muted text-sm leading-relaxed">
-              Agence web & product spécialisée Next.js. Nous transformons votre vision en réalité digitale performante.
+              Agence web qui vise les landing pages rapides. Nous transformons votre vision en réalité digitale performante.
             </p>
           </div>
 
@@ -31,10 +32,10 @@ export function Footer() {
           <div className="space-y-4">
             <h4 className="font-bold text-text">Navigation</h4>
             <ul className="space-y-2 text-sm text-text-muted">
-              <li><a href="#" className="hover:text-brand transition-colors">Accueil</a></li>
-              <li><a href="#" className="hover:text-brand transition-colors">Expertise</a></li>
-              <li><a href="#" className="hover:text-brand transition-colors">Notre Méthode</a></li>
-              <li><a href="#" className="hover:text-brand transition-colors">Tarifs</a></li>
+              <li><a href="/" className="hover:text-brand transition-colors">Accueil</a></li>
+              <li><a href="/services" className="hover:text-brand transition-colors">Expertise</a></li>
+              <li><a href="/methode" className="hover:text-brand transition-colors">Notre Méthode</a></li>
+              <li><a href="/offres" className="hover:text-brand transition-colors">Tarifs</a></li>
             </ul>
           </div>
 

@@ -5,6 +5,7 @@ import { copy } from "@/lib/copy";
 import Image from "next/image";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/Button";
+import Link from "next/link";
 
 // Define theme colors for the cards to match the reference aesthetic
 const CARD_THEMES = [
@@ -18,6 +19,13 @@ export function ServiceCards() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 w-full">
             {copy.services.items.map((item, idx) => {
                 const theme = CARD_THEMES[idx % CARD_THEMES.length];
+                // Map home cards to service page anchors
+                // 0: Vitrines -> Présence (#presence)
+                // 1: CMS -> Produit (#produit) (CMS fits in Product/SaaS loosely or just Presence, but let's map to Product for now or Presence)
+                // Actually CMS is closest to Product or Presence. Let's send 1 to #produit and 2 to #produit too?
+                // Let's map explicitly:
+                const anchors = ["presence", "produit", "produit"];
+                const targetId = anchors[idx] || "presence";
 
                 return (
                     <motion.div
@@ -75,7 +83,7 @@ export function ServiceCards() {
 
                             {/* CTA (Optional / Visual indicator) */}
                             <div className="mt-auto">
-                                <div className={cn(
+                                <Link href={`/services#${targetId}`} className={cn(
                                     "inline-flex items-center text-sm font-bold transition-all group-hover:gap-2",
                                     theme.accent
                                 )}>
@@ -83,7 +91,7 @@ export function ServiceCards() {
                                     <svg className="w-4 h-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
                                     </svg>
-                                </div>
+                                </Link>
                             </div>
                         </div>
                     </motion.div>

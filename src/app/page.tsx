@@ -3,6 +3,7 @@
 import { Button } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
 import { Section } from "@/components/ui/Section";
+import Link from "next/link";
 import { Scene } from "@/components/three/Scene";
 import { copy } from "@/lib/copy";
 import { WordRotate } from "@/components/ui/WordRotate";
@@ -42,7 +43,7 @@ export default function Home() {
         <Container className="text-center space-y-8 relative z-10">
           <div className="inline-flex items-center rounded-full border border-border bg-surface-1 px-3 py-1 text-sm font-medium text-text-muted mb-4">
             <span className="flex h-2 w-2 rounded-full bg-brand mr-2"></span>
-            Agence Web & Product Next.js
+            Agence Web
           </div>
 
           <h1 className="text-5xl md:text-[6rem] font-bold tracking-tight text-text leading-[1.0] md:leading-[1.1] max-w-6xl mx-auto">
@@ -63,14 +64,18 @@ export default function Home() {
           </p>
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-6">
-            <Button size="lg" className="h-14 px-8 text-lg">{copy.hero.ctaPrimary}</Button>
-            <Button variant="outline" size="lg" className="h-14 px-8 text-lg bg-surface-1/50 backdrop-blur">{copy.hero.ctaSecondary}</Button>
+            <Link href="/estimation">
+              <Button size="lg" className="h-14 px-8 text-lg">{copy.hero.ctaPrimary}</Button>
+            </Link>
+            <Link href="/offres">
+              <Button variant="outline" size="lg" className="h-14 px-8 text-lg bg-surface-1/50 backdrop-blur">{copy.hero.ctaSecondary}</Button>
+            </Link>
           </div>
         </Container>
       </Section>
 
       {/* Tech Stack Marquee */}
-      <TechStack />
+      {/* Tech Stack Marquee Removed per user request */}
 
       {/* Content */}
       <div className="font-figtree">
