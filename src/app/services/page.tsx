@@ -1,61 +1,125 @@
-"use client";
-
+import { ArrowUpRight, Code2, LayoutTemplate, RefreshCw, Settings2 } from "lucide-react";
+import { PageIntro } from "@/components/ui/PageIntro";
 import { Container } from "@/components/ui/Container";
 import { Section } from "@/components/ui/Section";
-import { copy } from "@/lib/copy";
-import { ServiceDetailRows } from "@/components/sections/ServiceDetailRows";
-import { TechStack } from "@/components/sections/TechStack";
+import { ButtonLink } from "@/components/ui/Button";
+import { MethodSection } from "@/components/sections/MethodSection";
 import { CTASection } from "@/components/sections/CTASection";
-import { Footer } from "@/components/layout/Footer";
-import { Navbar } from "@/components/layout/Navbar";
-import { motion } from "framer-motion";
-
+import { pageMetadata } from "@/lib/metadata";
+export const metadata = pageMetadata("Expertises", "/services");
+const services = [
+  {
+    icon: LayoutTemplate,
+    number: "01",
+    title: "Présenter votre activité.",
+    subtitle: "Sites vitrines & pages de lancement",
+    description:
+      "Votre métier, votre différence et une manière simple de vous contacter. Une présence professionnelle pour rassurer les personnes qui vous découvrent.",
+    items: [
+      "Structure des pages et parcours",
+      "Design adapté à votre identité",
+      "Formulaires et référencement essentiel",
+    ],
+    href: "/offres#vitrine",
+    cta: "Découvrir les sites vitrines",
+    art: "vitrine",
+  },
+  {
+    icon: Settings2,
+    number: "02",
+    title: "Faire vivre votre contenu.",
+    subtitle: "Sites administrables & publications",
+    description:
+      "Vos actualités, vos réalisations ou votre catalogue changent. Un espace de gestion vous permet de les mettre à jour sans dépendre d’un développeur au quotidien.",
+    items: [
+      "Gestion de contenus adaptée à vos besoins",
+      "Blog, galerie ou catalogue",
+      "Formation et guide de prise en main",
+    ],
+    href: "/offres#evolutif",
+    cta: "Découvrir les sites administrables",
+    art: "cms",
+  },
+  {
+    icon: RefreshCw,
+    number: "03",
+    title: "Donner une suite à l’existant.",
+    subtitle: "Refonte, maintenance & amélioration",
+    description:
+      "Un site qui vieillit ou un parcours qui bloque ? On fait le point avant de changer les choses. Les améliorations sont priorisées selon leur utilité pour votre activité.",
+    items: [
+      "Audit de l’existant et recommandations",
+      "Refonte graphique et corrections",
+      "Maintenance corrective et évolutive",
+    ],
+    href: "/estimation?format=complet&type=refonte",
+    cta: "Parler de mon site actuel",
+    art: "refonte",
+  },
+  {
+    icon: Code2,
+    number: "04",
+    title: "Répondre à un besoin précis.",
+    subtitle: "Fonctionnalités & applications web",
+    description:
+      "Réservation, espace client, boutique ou outil interne : un développement spécifique commence par un besoin bien défini et une première version réaliste.",
+    items: [
+      "Cadrage fonctionnel et étude de faisabilité",
+      "Intégration avec vos outils",
+      "Développement et déploiement",
+    ],
+    href: "/estimation?format=complet&type=application",
+    cta: "Étudier mon besoin",
+    art: "app",
+  },
+];
 export default function ServicesPage() {
   return (
-    <main className="min-h-screen bg-bg text-text font-figtree overflow-x-hidden">
-      {/* Navbar needed here since it's not in layout for this specific page structure if layout is global? 
-          Actually layout is global, so Navbar is already there. 
-          I will just render the main content.
-      */}
-
-      {/* Hero */}
-      <Section className="pt-32 md:pt-48 pb-20 flex flex-col items-center justify-center text-center relative overflow-hidden">
-        <Container className="relative z-10">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-          >
-            <div className="inline-flex items-center rounded-full border border-border bg-surface-1 px-3 py-1 text-sm font-medium text-text-muted mb-6">
-              <span className="flex h-2 w-2 rounded-full bg-brand mr-2"></span>
-              Nos Expertises
-            </div>
-            <h1 className="text-5xl md:text-7xl font-bold tracking-tight mb-6 max-w-4xl mx-auto leading-tight">
-              {copy.servicesPage.hero.title}
-            </h1>
-            <p className="text-xl text-text-muted max-w-2xl mx-auto leading-relaxed">
-              {copy.servicesPage.hero.subtitle}
-            </p>
-          </motion.div>
-        </Container>
-        {/* Background Glow */}
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[1000px] h-[600px] bg-brand/5 blur-[120px] rounded-full pointer-events-none -z-10" />
-      </Section>
-
-      {/* Tech Stack Marquee */}
-      {/* Tech Stack Marquee Removed per user request */}
-
-      {/* Main Content */}
-      <ServiceDetailRows />
-
-      {/* Trust/Process Reminder (Reusing Method if fitting, or just jump to CTA) */}
-      {/* Let's keep it focused on services for now */}
-
-      {/* CTA */}
+    <>
+      <PageIntro
+        eyebrow="Expertises"
+        title={
+          <>
+            Du beau, du clair.
+            <br />
+            <span>Et du concret.</span>
+          </>
+        }
+        description="Du premier site à l’outil qui vous simplifie la vie, chaque choix part de votre activité. La technique vient servir le projet."
+      />
+      <Container>
+        <div className="service-list">
+          {services.map((service) => (
+            <Section className="service-row" key={service.number}>
+              <div className={`service-art service-art--${service.art}`} aria-hidden="true">
+                <span className="service-art-number">{service.number} /</span>
+                <service.icon size={90} strokeWidth={0.7} />
+                <div className="service-art-lines">
+                  <i />
+                  <i />
+                  <i />
+                </div>
+                <span className="service-art-label">{service.subtitle}</span>
+              </div>
+              <div className="service-copy">
+                <p className="eyebrow">{service.subtitle}</p>
+                <h2>{service.title}</h2>
+                <p>{service.description}</p>
+                <ul className="simple-list">
+                  {service.items.map((item) => (
+                    <li key={item}>{item}</li>
+                  ))}
+                </ul>
+                <ButtonLink href={service.href} variant="secondary">
+                  {service.cta} <ArrowUpRight size={17} />
+                </ButtonLink>
+              </div>
+            </Section>
+          ))}
+        </div>
+      </Container>
+      <MethodSection />
       <CTASection />
-
-      {/* Footer */}
-      <Footer />
-    </main>
+    </>
   );
 }

@@ -1,0 +1,11 @@
+node_modules
+.next
+pnpm-lock.yaml
+.antigravity
+public
+.env*
+coverage
+docs/verification
+
+.cache/
+playwright-report/

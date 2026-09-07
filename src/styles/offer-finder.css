@@ -1,0 +1,136 @@
+.offer-finder {
+  border: 1px solid var(--line);
+  background: var(--white);
+  border-radius: var(--radius-md);
+  margin-bottom: 36px;
+}
+.offer-finder > summary {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 24px 30px;
+  cursor: pointer;
+}
+.offer-finder > summary::-webkit-details-marker {
+  display: none;
+}
+.offer-finder > summary > svg:first-child {
+  color: var(--blue);
+}
+.offer-finder > summary strong {
+  display: block;
+  font-size: 1rem;
+  font-weight: 550;
+}
+.offer-finder > summary small {
+  display: block;
+  font-size: 0.8rem;
+  color: var(--muted);
+  margin-top: 3px;
+}
+.finder-toggle {
+  margin-left: auto;
+}
+.offer-finder[open] .finder-toggle {
+  transform: rotate(45deg);
+}
+.finder-content {
+  padding: 0 30px 30px;
+}
+.finder-questions {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 40px;
+  padding-top: 28px;
+  border-top: 1px solid var(--line);
+}
+.finder-questions fieldset {
+  border: 0;
+  padding: 0;
+  margin: 0;
+  min-width: 0;
+}
+.finder-questions legend {
+  font-size: 0.84rem;
+  font-weight: 600;
+  margin-bottom: 20px;
+}
+.finder-questions .choice-label {
+  margin-top: 10px;
+}
+.finder-hint {
+  font-size: 0.77rem;
+  color: var(--muted);
+  margin-top: 18px;
+}
+.finder-result {
+  margin-top: 30px;
+  padding: 28px;
+  border-radius: var(--radius-sm);
+  background: var(--paper);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+}
+.finder-result > div {
+  max-width: 690px;
+}
+.finder-result .eyebrow {
+  margin-bottom: 12px;
+}
+.finder-result h3 {
+  font-size: 1.65rem;
+}
+.finder-result p:not(.eyebrow) {
+  font-size: 0.83rem;
+  color: var(--muted);
+}
+.finder-result h3 + p {
+  margin-top: 14px;
+}
+.finder-price {
+  display: block;
+  font-size: 1rem;
+  margin-top: 18px;
+  font-weight: 600;
+}
+.finder-price span {
+  color: var(--muted);
+  font-size: 0.77rem;
+  font-weight: 400;
+}
+.finder-result .finder-disclaimer {
+  flex-basis: 100%;
+  font-size: 0.69rem;
+  border-top: 1px solid var(--line);
+  padding-top: 18px;
+}
+@media (max-width: 700px) {
+  .offer-finder > summary {
+    padding: 22px;
+    gap: 14px;
+  }
+  .offer-finder > summary > svg:first-child {
+    display: none;
+  }
+  .finder-content {
+    padding: 0 22px 22px;
+  }
+  .finder-questions {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+  .finder-result {
+    padding: 22px;
+  }
+  .finder-price span {
+    display: block;
+    margin-top: 5px;
+  }
+  .finder-result .button {
+    width: 100%;
+  }
+}

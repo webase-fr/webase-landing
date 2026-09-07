@@ -1,0 +1,207 @@
+/* One brief card component, shared between entry points and the questionnaire. */
+.brief-section {
+  border-top: 1px solid var(--line);
+}
+.brief-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 24px;
+}
+.brief-card {
+  display: flex;
+  flex-direction: column;
+  padding: clamp(28px, 3.4vw, 48px);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-md);
+  background: var(--white);
+  min-width: 0;
+}
+.brief-card--complet {
+  background: var(--forest);
+  border-color: var(--forest);
+  color: var(--white);
+}
+.brief-card-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 35px;
+  font-size: 0.73rem;
+  font-weight: 550;
+}
+.brief-card-meta > span:first-child {
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--blue);
+}
+.brief-card--complet .brief-card-meta > span:first-child {
+  color: var(--lime);
+}
+.brief-duration {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  border: 1px solid var(--line);
+  border-radius: 30px;
+  padding: 5px 10px;
+}
+.brief-card--complet .brief-duration {
+  border-color: #627660;
+}
+.brief-card h3 {
+  font-size: clamp(1.7rem, 2.5vw, 2.5rem);
+  max-width: 350px;
+  line-height: 1.12;
+  letter-spacing: -0.045em;
+}
+.brief-description {
+  color: var(--muted);
+  font-size: 0.93rem;
+  margin-top: 18px;
+  max-width: 440px;
+}
+.brief-card--complet .brief-description,
+.brief-card--complet .brief-card-action > span {
+  color: #d1dfc9;
+}
+.brief-details {
+  list-style: none;
+  padding: 0;
+  margin: 28px 0 32px;
+  display: grid;
+  gap: 10px;
+  font-size: 0.81rem;
+}
+.brief-details li {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+}
+.brief-details svg {
+  color: var(--blue);
+  margin-top: 3px;
+}
+.brief-card--complet .brief-details svg {
+  color: var(--lime);
+}
+.brief-card-action {
+  margin-top: auto;
+}
+.brief-card-action .button {
+  width: 100%;
+  justify-content: space-between;
+}
+.brief-card-action > span {
+  display: block;
+  margin-top: 12px;
+  font-size: 0.68rem;
+  text-align: center;
+  color: var(--muted);
+}
+.brief-alternative {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px 16px;
+  flex-wrap: wrap;
+  font-size: 0.83rem;
+  color: var(--muted);
+  margin-top: 30px;
+}
+.brief-alternative a {
+  overflow-wrap: anywhere;
+}
+.brief-next {
+  margin-top: 48px;
+  padding-block: 28px;
+  border-block: 1px solid var(--line);
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 36px;
+}
+.brief-next span {
+  font-size: 0.82rem;
+  font-weight: 600;
+}
+.brief-next p {
+  margin-top: 8px;
+  font-size: 0.8rem;
+  color: var(--muted);
+}
+.quote-entry .notice {
+  margin: 0 0 24px;
+}
+.quote-mode-selector .brief-grid {
+  grid-template-columns: 1fr;
+}
+.quote-mode-selector .brief-card {
+  padding: 25px;
+}
+.quote-mode-selector .brief-card h3 {
+  font-size: 1.8rem;
+}
+.quote-mode-selector .brief-card-meta {
+  margin-bottom: 22px;
+}
+.quote-mode-selector .brief-description {
+  font-size: 0.85rem;
+}
+.quote-mode-selector .brief-details {
+  margin-block: 20px;
+}
+.quote-loading {
+  display: grid;
+  grid-template-columns: 0.8fr 1.2fr;
+  gap: 60px;
+}
+.quote-loading > div {
+  height: 420px;
+  border-radius: var(--radius-md);
+  background: #eceee5;
+}
+@media (max-width: 700px) {
+  .brief-grid,
+  .brief-next,
+  .quote-loading {
+    grid-template-columns: 1fr;
+  }
+  .brief-card {
+    padding: 28px;
+  }
+  .brief-card h3 {
+    font-size: 2rem;
+    max-width: 320px;
+  }
+  .brief-card-meta {
+    margin-bottom: 28px;
+  }
+  .brief-next {
+    gap: 24px;
+    margin-top: 32px;
+  }
+  .brief-alternative {
+    justify-content: flex-start;
+  }
+  .quote-loading > div:first-child {
+    height: 150px;
+  }
+}
+@media (max-width: 380px) {
+  .brief-card,
+  .quote-mode-selector .brief-card {
+    padding: 22px;
+  }
+  .brief-card h3 {
+    font-size: 1.8rem;
+  }
+  .brief-card-action .button {
+    padding-inline: 14px;
+    font-size: 0.78rem;
+    gap: 10px;
+  }
+  .brief-card-meta {
+    font-size: 0.68rem;
+  }
+}

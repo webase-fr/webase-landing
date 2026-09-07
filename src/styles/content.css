@@ -1,0 +1,127 @@
+/* Reading, legal and utility states */
+.reading-layout {
+  max-width: 860px;
+}
+.prose {
+  font-size: 1rem;
+  line-height: 1.9;
+  color: var(--muted);
+}
+.prose h2 {
+  color: var(--ink);
+  font-size: 1.8rem;
+  margin: 48px 0 20px;
+}
+.prose h2:first-child {
+  margin-top: 0;
+}
+.prose h3 {
+  margin: 28px 0 15px;
+  color: var(--ink);
+}
+.prose p + p {
+  margin-top: 18px;
+}
+.prose ul,
+.prose ol {
+  padding-left: 22px;
+  margin-block: 20px;
+}
+.prose ul {
+  list-style: disc;
+}
+.prose ol {
+  list-style: decimal;
+}
+.prose a {
+  color: var(--blue);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.prose strong {
+  color: var(--ink);
+  font-weight: 600;
+}
+.prose .legal-details {
+  background: #eef0e7;
+  border: 1px solid var(--line);
+  padding: 25px;
+  border-radius: var(--radius-md);
+}
+.notice {
+  background: #eef0e7;
+  border-left: 3px solid var(--blue);
+  padding: 18px 22px;
+  margin-block: 24px;
+  font-size: 0.87rem;
+}
+.journal-list {
+  border-top: 1px solid var(--line);
+}
+.journal-card {
+  display: grid;
+  grid-template-columns: 0.5fr 1.7fr auto;
+  gap: 40px;
+  padding-block: 38px;
+  border-bottom: 1px solid var(--line);
+  align-items: center;
+}
+.journal-card time {
+  color: var(--muted);
+  font-size: 0.75rem;
+}
+.journal-card h2 {
+  font-size: 1.75rem;
+}
+.journal-card p {
+  color: var(--muted);
+  font-size: 0.88rem;
+  margin-top: 12px;
+  max-width: 630px;
+}
+.journal-card:hover h2 {
+  color: var(--blue);
+}
+.article-meta {
+  color: var(--muted);
+  font-size: 0.8rem;
+  margin-top: 25px;
+}
+.error-page {
+  padding-block: 100px;
+  text-align: center;
+}
+.error-page .eyebrow {
+  justify-content: center;
+}
+.error-page p:not(.eyebrow) {
+  color: var(--muted);
+  margin: 26px auto;
+  max-width: 450px;
+}
+.error-page .button-row {
+  justify-content: center;
+}
+
+.article-title {
+  font-size: var(--heading-lg);
+}
+.article-back {
+  margin-bottom: 30px;
+}
+
+.token-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+  gap: 20px;
+}
+.token-swatch > div {
+  aspect-ratio: 1;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+}
+.token-swatch > span {
+  font-size: 0.75rem;
+  display: block;
+  margin-top: 8px;
+}

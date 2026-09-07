@@ -39,3 +39,9 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# Commit the documented template, never local secrets
+!.env.example
+
+.cache/
+playwright-report/

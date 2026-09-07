@@ -1,42 +1,38 @@
 import type { Metadata } from "next";
-import { Outfit, Figtree } from "next/font/google";
-import "./globals.css";
-import "../styles/tokens.css";
-
-const outfit = Outfit({ subsets: ["latin"], variable: "--font-outfit" });
-const figtree = Figtree({ subsets: ["latin"], variable: "--font-figtree" });
-
+import localFont from "next/font/local";
 import { Navbar } from "@/components/layout/Navbar";
+import { Footer } from "@/components/layout/Footer";
+import { site } from "@/content/site";
+import { getSiteUrl } from "@/lib/metadata";
+import "./globals.css";
 
+const figtree = localFont({
+  src: "../../node_modules/@fontsource-variable/figtree/files/figtree-latin-wght-normal.woff2",
+  variable: "--font-figtree",
+  display: "swap",
+  weight: "300 900",
+});
 export const metadata: Metadata = {
-  title: "Webase | Du web propre. Qui vend.",
-  description: "Agence web moderne. Sites vitrines, plateformes, web apps. Performance, SEO, et design premium.",
+  metadataBase: getSiteUrl(),
+  title: { default: "Webase — Votre savoir-faire. Un site à sa hauteur.", template: "%s | Webase" },
+  description: site.description,
+  robots: process.env.SITE_URL ? { index: true, follow: true } : { index: false, follow: false },
+  twitter: { card: "summary_large_image" },
 };
-
-import { ThemeProvider } from "@/components/theme-provider";
-
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="fr" suppressHydrationWarning>
-      <body
-        className={`${outfit.variable} ${figtree.variable} font-sans antialiased bg-bg text-text selection:bg-brand selection:text-white`}
-      >
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="system"
-          enableSystem
-          disableTransitionOnChange
-        >
-
-          <Navbar />
-          <div className="min-h-screen flex flex-col pt-28">
-            {children}
-          </div>
-        </ThemeProvider>
+    <html lang="fr" className={figtree.variable}>
+      {/* Extensions may add body attributes before hydration (e.g. cz-shortcut-listen).
+          Scope this exception to body; descendants must still match the server HTML. */}
+      <body suppressHydrationWarning>
+        <a className="skip-link" href="#contenu">
+          Aller au contenu
+        </a>
+        <Navbar />
+        <main id="contenu" tabIndex={-1}>
+          {children}
+        </main>
+        <Footer />
       </body>
     </html>
   );

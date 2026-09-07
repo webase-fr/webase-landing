@@ -1,51 +1,12 @@
 @import "tailwindcss";
 @import "../styles/tokens.css";
-
-@theme {
-  /* Map tokens to Tailwind utilities */
-  --color-brand: var(--brand);
-  --color-brand-foreground: var(--brand-foreground);
-
-  --color-bg: var(--bg);
-  --color-surface-1: var(--surface-1);
-  --color-surface-2: var(--surface-2);
-
-  --color-text: var(--text);
-  --color-text-muted: var(--text-muted);
-  --color-border: var(--border);
-
-  /* Radius overrides */
-  --radius-sm: var(--radius-sm);
-  --radius-md: var(--radius-md);
-  --radius-lg: var(--radius-lg);
-
-  /* Fonts */
-  --font-outfit: var(--font-outfit);
-  --font-figtree: var(--font-figtree);
-}
-
-/* Base structural styles */
-body {
-  background-color: var(--bg);
-  color: var(--text);
-  font-family: var(--font-sans, system-ui, sans-serif);
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-/* Swiss typography rhythm */
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  letter-spacing: -0.02em;
-  /* Tighter headings */
-}
-
-/* Focus styles for keyboard users */
-:focus-visible {
-  outline: 2px solid var(--focus);
-  outline-offset: 2px;
-}
+@import "../styles/base.css";
+@import "../styles/layout.css";
+@import "../styles/sections.css";
+@import "../styles/illustration.css";
+@import "../styles/pages.css";
+@import "../styles/forms.css";
+@import "../styles/briefs.css";
+@import "../styles/offer-finder.css";
+@import "../styles/content.css";
+@import "../styles/responsive.css";

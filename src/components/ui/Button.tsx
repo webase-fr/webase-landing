@@ -1,46 +1,30 @@
+import Link from "next/link";
+import type { ComponentProps } from "react";
 import { cn } from "@/lib/utils";
-import React from "react";
 
-interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-  variant?: "primary" | "secondary" | "outline" | "ghost";
-  size?: "sm" | "md" | "lg";
-  children: React.ReactNode;
+type Appearance = {
+  variant?: "primary" | "secondary" | "inverse" | "ghost";
+  size?: "sm" | "md";
+  className?: string;
+};
+function classes({ variant = "primary", size = "md", className }: Appearance) {
+  return cn("button", `button--${variant}`, `button--${size}`, className);
 }
-
-export const buttonVariants = {
-  primary: "bg-brand text-brand-foreground hover:bg-brand/90 hover:shadow-sm",
-  secondary: "bg-surface-2 text-text hover:bg-surface-2/80",
-  outline: "bg-transparent border border-border text-text hover:bg-surface-1 hover:border-text",
-  ghost: "bg-transparent text-text hover:bg-surface-1",
-};
-
-export const buttonSizes = {
-  sm: "h-9 px-4 text-sm",
-  md: "h-11 px-6 text-base",
-  lg: "h-14 px-8 text-lg",
-};
-
 export function Button({
+  variant,
+  size,
   className,
-  variant = "primary",
-  size = "md",
-  children,
-  asChild,
+  type = "button",
   ...props
-}: ButtonProps & { asChild?: boolean }) {
-  return (
-    <button
-      className={cn(
-        "inline-flex items-center justify-center font-semibold transition-all duration-200 cursor-pointer border border-transparent",
-        "rounded-[var(--radius-sm)]", // Use token for sharp radius
-        "focus-visible:ring-2 focus-visible:ring-focus focus-visible:ring-offset-2",
-        buttonVariants[variant],
-        buttonSizes[size],
-        className
-      )}
-      {...props}
-    >
-      {children}
-    </button>
-  );
+}: ComponentProps<"button"> & Appearance) {
+  return <button type={type} className={classes({ variant, size, className })} {...props} />;
+}
+/** Navigation uses links, actions use buttons. No nested interactive elements. */
+export function ButtonLink({
+  variant,
+  size,
+  className,
+  ...props
+}: ComponentProps<typeof Link> & Appearance) {
+  return <Link className={classes({ variant, size, className })} {...props} />;
 }

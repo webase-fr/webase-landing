@@ -1,59 +1,43 @@
-import fs from 'fs';
-import path from 'path';
-import matter from 'gray-matter';
+import "server-only";
+import fs from "node:fs";
+import path from "node:path";
+import matter from "gray-matter";
+import { z } from "zod";
 
-const postsDirectory = path.join(process.cwd(), 'src/content/posts');
-
+const directory = path.join(process.cwd(), "src/content/posts");
+const frontmatterSchema = z.object({
+  title: z.string().min(1),
+  date: z.iso.date(),
+  description: z.string().min(1),
+  author: z.string().default("Luis Doudeau"),
+  tags: z.array(z.string()).default([]),
+});
 export type Post = {
   slug: string;
-  frontmatter: {
-    title: string;
-    date: string;
-    description: string;
-    coverImage?: string;
-    author?: string;
-    tags?: string[];
-    [key: string]: any;
-  };
+  frontmatter: z.infer<typeof frontmatterSchema>;
   content: string;
 };
-
-export function getPostSlugs() {
-  if (!fs.existsSync(postsDirectory)) {
-    return [];
-  }
-  return fs.readdirSync(postsDirectory);
+export function getPostBySlug(slug: string): Post | null {
+  if (!/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(slug)) return null;
+  const filename = path.join(directory, `${slug}.mdx`);
+  if (!fs.existsSync(filename)) return null;
+  const { data, content } = matter(fs.readFileSync(filename, "utf8"));
+  return { slug, content, frontmatter: frontmatterSchema.parse(data) };
 }
-
-export function getPostBySlug(slug: string, fields: string[] = []) {
-  const realSlug = slug.replace(/\.mdx$/, '');
-  const fullPath = path.join(postsDirectory, `${realSlug}.mdx`);
-  const fileContents = fs.readFileSync(fullPath, 'utf8');
-  const { data, content } = matter(fileContents);
-
-  const post: any = {};
-
-  // Ensure only the minimal needed data is exposed
-  fields.forEach((field) => {
-    if (field === 'slug') {
-      post[field] = realSlug;
-    }
-    if (field === 'content') {
-      post[field] = content;
-    }
-    if (field === 'frontmatter') {
-        post[field] = data;
-    }
-  });
-
-  return post;
+export function getAllPosts(): Post[] {
+  if (!fs.existsSync(directory)) return [];
+  return fs
+    .readdirSync(directory)
+    .filter((file) => file.endsWith(".mdx"))
+    .map((file) => getPostBySlug(file.slice(0, -4)))
+    .filter((post): post is Post => post !== null)
+    .sort((a, b) => b.frontmatter.date.localeCompare(a.frontmatter.date));
 }
-
-export function getAllPosts(fields: string[] = []) {
-  const slugs = getPostSlugs();
-  const posts = slugs
-    .map((slug) => getPostBySlug(slug, fields))
-    // Sort posts by date in descending order
-    .sort((post1, post2) => (post1.frontmatter.date > post2.frontmatter.date ? -1 : 1));
-  return posts;
+export function formatPostDate(date: string) {
+  return new Intl.DateTimeFormat("fr-FR", {
+    day: "numeric",
+    month: "long",
+    year: "numeric",
+    timeZone: "UTC",
+  }).format(new Date(date));
 }

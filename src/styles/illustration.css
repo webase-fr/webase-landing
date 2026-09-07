@@ -1,0 +1,329 @@
+/* A single coordinate system keeps the decorative mockups in proportion at every width.
+   1cqw = 1% of this figure, independent of viewport size or page layout. */
+.visual-canvas {
+  container-type: inline-size;
+  position: relative;
+  isolation: isolate;
+  aspect-ratio: 0.96;
+  border-radius: 10px;
+  background: #e9ecf6;
+  overflow: hidden;
+  background-image:
+    linear-gradient(#b7c0d526 1px, transparent 1px),
+    linear-gradient(90deg, #b7c0d526 1px, transparent 1px);
+  background-size: 38px 38px;
+}
+.visual-coordinate {
+  position: absolute;
+  left: 7%;
+  top: 5%;
+  font-size: 1.45cqw;
+  letter-spacing: 0.11em;
+  font-weight: 550;
+  color: #58637d;
+}
+.visual-orbit {
+  position: absolute;
+  border: 1px solid #c7cfe0;
+  border-radius: 50%;
+  width: 95%;
+  height: 90%;
+  left: 35%;
+  top: -22%;
+}
+.mock-browser {
+  position: absolute;
+  width: 83%;
+  left: 7%;
+  top: 15%;
+  background: #f9f7ed;
+  border: 1px solid #d3d3d0;
+  border-radius: 1.2cqw;
+  transform: rotate(-5deg);
+  box-shadow: 3cqw 5cqw 8cqw #424b7323;
+  overflow: hidden;
+}
+.mock-toolbar {
+  height: 4.4cqw;
+  background: white;
+  border-bottom: 1px solid #dddcd3;
+  display: flex;
+  align-items: center;
+  gap: 0.7cqw;
+  padding-inline: 2cqw;
+}
+.mock-toolbar > span:not(.mock-address) {
+  width: 0.75cqw;
+  height: 0.75cqw;
+  border-radius: 50%;
+  background: #cecec8;
+}
+.mock-toolbar .mock-address {
+  position: absolute;
+  width: 100%;
+  text-align: center;
+  left: 0;
+  font-size: 1.1cqw;
+  color: #62685e;
+  letter-spacing: 0.015em;
+}
+.mock-page {
+  padding: 3.5cqw 4cqw 2cqw;
+}
+.mock-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 1.1cqw;
+  line-height: 1;
+}
+.mock-logo {
+  font-family: Georgia, serif;
+  font-size: 4.5cqw;
+  letter-spacing: -0.08em;
+  line-height: 1;
+}
+.mock-logo > span {
+  font-size: 1.5cqw;
+  vertical-align: super;
+  margin-left: 0.4cqw;
+}
+.mock-content {
+  padding-top: 3cqw;
+}
+.mock-eyebrow {
+  font-size: 1cqw;
+  line-height: 1.4;
+  letter-spacing: 0.15em;
+  display: block;
+}
+.mock-title {
+  font-family: Georgia, serif;
+  font-size: 7.7cqw;
+  line-height: 1;
+  letter-spacing: -0.055em;
+  margin-top: 2cqw;
+}
+.mock-link {
+  display: flex;
+  align-items: center;
+  gap: 1.5cqw;
+  margin-top: 2.5cqw;
+  font-size: 1.1cqw;
+  line-height: 1;
+}
+.mock-link svg {
+  width: 2cqw;
+  height: 2cqw;
+}
+.architecture {
+  height: 24cqw;
+  position: relative;
+  overflow: hidden;
+  margin-top: 3cqw;
+  background: #ded3be;
+}
+.architecture-wall {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    135deg,
+    #e5ddc8 0%,
+    #e2d8c0 36%,
+    #c1b599 36.2%,
+    #ebe1cd 57%,
+    #cfbea1 100%
+  );
+}
+.architecture-arch {
+  position: absolute;
+  width: 29%;
+  height: 115%;
+  bottom: -12%;
+  left: 45%;
+  border-radius: 60% 60% 0 0;
+  background: linear-gradient(100deg, #494b3d, #9f9c83);
+  box-shadow:
+    inset 2cqw 0 2.4cqw #282e2b70,
+    -3cqw 1cqw 0.4cqw #f4ead6;
+}
+.architecture-plinth {
+  position: absolute;
+  height: 39%;
+  width: 17%;
+  bottom: 0;
+  left: 20%;
+  background: linear-gradient(90deg, #f7ecd6, #d0c3a7);
+  border-top: 1.5cqw solid #f4e9d1;
+  transform: skewY(-7deg);
+  box-shadow: 5cqw 2cqw 3cqw #685e4e40;
+}
+.architecture-sphere {
+  position: absolute;
+  border-radius: 50%;
+  width: 14%;
+  aspect-ratio: 1;
+  background: radial-gradient(circle at 29% 22%, #f4ebd7, #c5b798 70%, #9d927c);
+  bottom: 33%;
+  left: 21%;
+}
+.architecture-shadow {
+  position: absolute;
+  width: 50%;
+  height: 100%;
+  right: -32%;
+  background: #3e3e2920;
+  transform: rotate(-28deg);
+}
+.mock-bottom {
+  margin-top: 2cqw;
+  display: flex;
+  justify-content: space-between;
+  font-size: 1cqw;
+  line-height: 1.4;
+  letter-spacing: 0.04em;
+}
+.mock-mobile {
+  position: absolute;
+  width: 25%;
+  aspect-ratio: 0.53;
+  right: 5.5%;
+  bottom: 10%;
+  border: 0.8cqw solid #242b25;
+  border-radius: 3.5cqw;
+  background: #344a3b;
+  color: #f8f7e6;
+  transform: rotate(7deg);
+  box-shadow: 2cqw 4cqw 6cqw #424b7333;
+  padding: 3.5cqw 2cqw 2cqw;
+}
+.mobile-speaker {
+  height: 0.8cqw;
+  width: 28%;
+  border-radius: 0 0 8px 8px;
+  background: #242b25;
+  position: absolute;
+  top: 0;
+  left: 36%;
+}
+.mobile-wordmark {
+  font-family: Georgia, serif;
+  font-size: 2.5cqw;
+  line-height: 1;
+  display: flex;
+  justify-content: space-between;
+}
+.mobile-wordmark > span {
+  font-size: 1.8cqw;
+  font-family: Arial, sans-serif;
+}
+.mock-mobile > p {
+  font-family: Georgia, serif;
+  font-size: 4.5cqw;
+  line-height: 1.05;
+  margin-top: 3cqw;
+  letter-spacing: -0.02em;
+}
+.mobile-arch {
+  height: 18cqw;
+  width: 77%;
+  border-radius: 50% 50% 0 0;
+  margin: 2.7cqw auto 0;
+  background: linear-gradient(110deg, #ede5c8, #aaad8f 46%, #cbd0a9 47%, #929d7c);
+  box-shadow: inset 1.5cqw 0 3cqw #ffffff26;
+}
+.mobile-link {
+  display: block;
+  font-size: 1cqw;
+  margin-top: 2cqw;
+  text-align: center;
+}
+.visual-quality {
+  position: absolute;
+  top: 9%;
+  right: 5%;
+  background: white;
+  border: 1px solid #e1e4ec;
+  border-radius: 1.2cqw;
+  padding: 2cqw 2.5cqw;
+  display: flex;
+  align-items: center;
+  gap: 1.8cqw;
+  transform: rotate(3deg);
+  box-shadow: 0 1cqw 4cqw #242b2510;
+}
+.visual-quality > span {
+  display: grid;
+  place-items: center;
+  width: 5cqw;
+  height: 5cqw;
+  background: var(--lime);
+  border-radius: 50%;
+}
+.visual-quality svg {
+  width: 3cqw;
+  height: 3cqw;
+}
+.visual-quality > div {
+  font-size: 1.85cqw;
+  line-height: 1.4;
+  font-weight: 600;
+}
+.visual-quality small {
+  display: block;
+  color: var(--muted);
+  font-size: 1.55cqw;
+  font-weight: 400;
+}
+.visual-cursor {
+  position: absolute;
+  left: 12%;
+  bottom: 6%;
+  color: var(--blue);
+  transform: rotate(-5deg);
+}
+.visual-cursor svg {
+  width: 4.5cqw;
+  height: 4.5cqw;
+}
+.visual-cursor > span {
+  display: block;
+  margin: -0.4cqw 0 0 4cqw;
+  color: white;
+  font-size: 1.6cqw;
+  background: var(--blue);
+  border-radius: 0.8cqw;
+  padding: 1.3cqw 2cqw;
+}
+.visual-baseline {
+  position: absolute;
+  bottom: 3%;
+  left: 7%;
+  right: 7%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 1.1cqw;
+  letter-spacing: 0.13em;
+  color: #58637d;
+}
+.visual-baseline > span:last-child {
+  font-size: 4cqw;
+}
+@media (max-width: 700px) {
+  .visual-canvas {
+    aspect-ratio: 1.02;
+  }
+  .mock-browser {
+    top: 12%;
+  }
+  .visual-quality {
+    top: 6%;
+  }
+  .visual-baseline {
+    display: none;
+  }
+  .visual-cursor {
+    bottom: 4%;
+  }
+}
