@@ -9,9 +9,9 @@ import { projectTypes } from "@/lib/lead-schema";
 import { formatPrice } from "@/lib/estimate";
 import { pageMetadata } from "@/lib/metadata";
 export const metadata = pageMetadata(
-  "Estimer votre projet",
+  "Devis gratuit pour votre site internet ou application",
   "/estimation",
-  "Décrivez votre projet web en 2 minutes ou préparez un brief complet en 5 à 8 minutes. Demande de devis gratuite, sans engagement, directement au studio.",
+  "Décrivez votre projet de site ou d’application en 2 minutes, ou préparez un brief complet en 5 à 8 minutes. Devis gratuit et sans engagement.",
 );
 export default async function EstimationPage({
   searchParams,

@@ -8,9 +8,12 @@ const directory = path.join(process.cwd(), "src/content/posts");
 const frontmatterSchema = z.object({
   title: z.string().min(1),
   date: z.iso.date(),
+  updated: z.iso.date().optional(),
   description: z.string().min(1),
   author: z.string().default("Luis Doudeau"),
   tags: z.array(z.string()).default([]),
+  /** Service pages this article supports, linked at the end of the article. */
+  services: z.array(z.string()).default([]),
 });
 export type Post = {
   slug: string;

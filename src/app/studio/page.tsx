@@ -5,13 +5,26 @@ import { Section } from "@/components/ui/Section";
 import { ButtonLink } from "@/components/ui/Button";
 import { MethodSection } from "@/components/sections/MethodSection";
 import { CTASection } from "@/components/sections/CTASection";
+import { JsonLd } from "@/components/seo/JsonLd";
+import { serviceArea } from "@/content/site";
 import { pageMetadata } from "@/lib/metadata";
-export const metadata = pageMetadata("Le studio — Luis Doudeau", "/studio");
+import { businessNode, founderNode, graph } from "@/lib/structured-data";
+export const metadata = pageMetadata(
+  "Luis Doudeau, développeur web freelance à Orléans",
+  "/studio",
+  "Webase, c’est Luis Doudeau : développeur web et mobile indépendant à Orléans. Sites internet, applications et plateformes sur mesure, avec un interlocuteur direct.",
+);
 export default function StudioPage() {
   return (
     <>
+      <JsonLd data={graph(founderNode(), businessNode())} />
       <PageIntro
-        eyebrow="Le studio"
+        breadcrumbs={[
+          { name: "Accueil", path: "/" },
+          { name: "Le studio", path: "/studio" },
+        ]}
+        eyebrow="Luis Doudeau · Développeur web freelance à Orléans"
+        eyebrowInTitle
         title={
           <>
             Un indépendant.
@@ -50,8 +63,14 @@ export default function StudioPage() {
               attention portée autant au résultat visible qu’à la qualité du développement.
             </p>
             <p>
-              Je conçois, développe, intègre et déploie votre site. Je peux aussi reprendre un
-              projet existant et assurer sa maintenance, dans un cadre défini ensemble.
+              Je conçois, développe, intègre et déploie votre site ou votre application. Je peux
+              aussi reprendre un projet existant et assurer sa maintenance, dans un cadre défini
+              ensemble.
+            </p>
+            <p>
+              Mon terrain de jeu technique : TypeScript, React, Next.js et Node.js, pour des sites
+              rapides, des applications web et mobiles et des plateformes SaaS. Des technologies
+              répandues, choisies pour que votre projet reste maintenable dans la durée.
             </p>
             <ButtonLink href="/contact">
               Échangeons simplement <ArrowUpRight size={17} />
@@ -86,6 +105,31 @@ export default function StudioPage() {
                 échanges réguliers en visio.
               </p>
             </div>
+          </div>
+        </Container>
+      </Section>
+      <Section id="zone-intervention">
+        <Container className="area-layout">
+          <div>
+            <p className="eyebrow">Zone d’intervention</p>
+            <h2>
+              Orléans, sa métropole
+              <br />
+              et toute la France.
+            </h2>
+          </div>
+          <div className="area-copy">
+            <p>
+              Basé à Orléans, j’accompagne en priorité les entreprises des 22 communes d’
+              {serviceArea.metropolis} et du {serviceArea.department}. Les échanges se font en visio
+              et par e-mail, et le projet avance sur une adresse de prévisualisation que vous
+              consultez quand vous le souhaitez.
+            </p>
+            <ul className="area-list" aria-label={`Communes d’${serviceArea.metropolis}`}>
+              {serviceArea.communes.map((commune) => (
+                <li key={commune}>{commune}</li>
+              ))}
+            </ul>
           </div>
         </Container>
       </Section>

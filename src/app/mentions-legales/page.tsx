@@ -3,7 +3,11 @@ import { Container } from "@/components/ui/Container";
 import { Section } from "@/components/ui/Section";
 import { PageIntro } from "@/components/ui/PageIntro";
 import { pageMetadata } from "@/lib/metadata";
-export const metadata = pageMetadata("Mentions légales", "/mentions-legales");
+export const metadata = pageMetadata(
+  "Mentions légales",
+  "/mentions-legales",
+  "Mentions légales du site Webase : éditeur, Luis Doudeau entrepreneur individuel à Orléans, SIREN, hébergement, propriété intellectuelle et conditions des devis.",
+);
 export default function LegalPage() {
   const host = process.env.HOSTING_NAME;
   const hostAddress = process.env.HOSTING_ADDRESS;

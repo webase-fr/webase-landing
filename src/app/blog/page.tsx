@@ -7,9 +7,9 @@ import { Container } from "@/components/ui/Container";
 import { Section } from "@/components/ui/Section";
 import { CTASection } from "@/components/sections/CTASection";
 export const metadata = pageMetadata(
-  "Le journal",
+  "Conseils pour créer et faire évoluer votre site internet",
   "/blog",
-  "Des repères simples pour préparer votre site web, faire les bons choix et comprendre les étapes de votre projet.",
+  "Prix d’un site, préparation du projet, référencement local, performance : des repères concrets pour réussir votre site internet ou votre application.",
 );
 export default function BlogPage() {
   const posts = getAllPosts();

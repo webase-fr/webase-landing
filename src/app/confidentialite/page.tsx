@@ -3,7 +3,11 @@ import { Container } from "@/components/ui/Container";
 import { Section } from "@/components/ui/Section";
 import { PageIntro } from "@/components/ui/PageIntro";
 import { pageMetadata } from "@/lib/metadata";
-export const metadata = pageMetadata("Confidentialité", "/confidentialite");
+export const metadata = pageMetadata(
+  "Confidentialité",
+  "/confidentialite",
+  "Confidentialité chez Webase : données recueillies par les formulaires de contact et de devis, finalités, prestataires, durées de conservation et vos droits.",
+);
 export default function PrivacyPage() {
   return (
     <>

@@ -2,6 +2,12 @@ import type { NextConfig } from "next";
 const nextConfig: NextConfig = {
   poweredByHeader: false,
   experimental: { serverActions: { bodySizeLimit: "64kb" } },
+  async redirects() {
+    return [
+      // Former article slug, renamed to describe its content.
+      { source: "/blog/hello-world", destination: "/blog/site-agreable-mobile", permanent: true },
+    ];
+  },
   async headers() {
     return [
       {

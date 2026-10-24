@@ -3,6 +3,7 @@ import { ArrowUpRight, MapPin } from "lucide-react";
 import { Container } from "@/components/ui/Container";
 import { Brand } from "@/components/ui/Brand";
 import { navigation, site } from "@/content/site";
+import { services, servicePath } from "@/content/services";
 export function Footer() {
   return (
     <footer className="site-footer">
@@ -16,8 +17,18 @@ export function Footer() {
               Une bonne base, c’est pour longtemps.
             </p>
             <span className="location">
-              <MapPin size={14} /> Orléans · Partout en France
+              <MapPin size={14} /> Orléans, Loiret · Partout en France
             </span>
+          </div>
+          <div>
+            <p className="footer-label">Services</p>
+            <nav aria-label="Services">
+              {services.map((service) => (
+                <Link href={servicePath(service.slug)} key={service.slug}>
+                  {service.shortName}
+                </Link>
+              ))}
+            </nav>
           </div>
           <div>
             <p className="footer-label">Explorer</p>

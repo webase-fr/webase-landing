@@ -6,6 +6,8 @@ const routes = [
   "/",
   "/offres",
   "/services",
+  "/services/creation-site-vitrine",
+  "/services/developpement-application-web",
   "/studio",
   "/realisations",
   "/contact",
@@ -116,6 +118,11 @@ test("accessibilité automatisée des pages et des formulaires", async ({ page }
     "/estimation?format=express",
     "/estimation?format=complet",
     "/realisations",
+    "/services",
+    "/services/creation-site-vitrine",
+    "/services/developpement-application-web",
+    "/studio",
+    "/blog/prix-site-internet",
   ]) {
     await page.goto(route);
     await expect(page.locator("main h1")).toBeVisible();

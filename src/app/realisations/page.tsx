@@ -7,11 +7,15 @@ import { Section } from "@/components/ui/Section";
 import { ButtonLink } from "@/components/ui/Button";
 import { CTASection } from "@/components/sections/CTASection";
 import { pageMetadata } from "@/lib/metadata";
-export const metadata = pageMetadata(
-  "Réalisations",
-  "/realisations",
-  "Les projets Webase : sites vitrines, sites administrables et applications web. Découvrez les sites réalisés par le studio indépendant.",
-);
+export const metadata = {
+  ...pageMetadata(
+    "Réalisations",
+    "/realisations",
+    "Les projets Webase : sites vitrines, sites administrables et applications web. Découvrez les sites réalisés par le studio indépendant.",
+  ),
+  // An empty gallery is thin content: keep it out of the index until real projects exist.
+  ...(projects.length ? {} : { robots: { index: false, follow: true } }),
+};
 export default function ProjectsPage() {
   return (
     <>

@@ -13,8 +13,18 @@ const routes = [
   "/estimation?format=complet",
   "/estimation?offre=evolutif",
   "/blog",
-  "/blog/hello-world",
+  "/blog/site-agreable-mobile",
   "/blog/preparer-son-projet",
+  "/blog/prix-site-internet",
+  "/blog/referencement-local-orleans",
+  "/services/creation-site-vitrine",
+  "/services/creation-site-e-commerce",
+  "/services/refonte-site-internet",
+  "/services/developpement-application-web",
+  "/services/creation-application-mobile",
+  "/services/developpement-saas-mvp",
+  "/services/referencement-seo",
+  "/services/maintenance-site-internet",
   "/mentions-legales",
   "/confidentialite",
 ];
@@ -67,7 +77,7 @@ for (const href of links) {
       `Ancre absente : ${url.pathname}${url.hash}`,
     );
 }
-for (const route of ["/cette-page-nexiste-pas", "/blog/article-absent"])
+for (const route of ["/cette-page-nexiste-pas", "/blog/article-absent", "/services/inconnu"])
   assert.equal((await fetch(new URL(route, base))).status, 404);
 for (const route of ["/robots.txt", "/sitemap.xml", "/icon.svg", "/opengraph-image"])
   assert.equal((await fetch(new URL(route, base))).status, 200, route);

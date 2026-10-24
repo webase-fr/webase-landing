@@ -1,20 +1,69 @@
 /** Public business information. Never put secrets in this module. */
 export const site = {
   name: "Webase",
+  /** Canonical production origin. Previews and local builds still point canonicals here. */
+  url: "https://webase.fr",
   owner: "Luis Doudeau",
+  jobTitle: "Développeur web et mobile indépendant",
   legalName: "DOUDEAU LUIS — Entrepreneur individuel",
   email: "luis.doudeau@gmail.com",
   address: "31 rue des Charretiers, 45000 Orléans, France",
+  postalAddress: {
+    streetAddress: "31 rue des Charretiers",
+    postalCode: "45000",
+    addressLocality: "Orléans",
+    addressRegion: "Centre-Val de Loire",
+    addressCountry: "FR",
+  },
   siren: "999 300 296",
   siret: "999 300 296 00012",
   vat: "FR82999300296",
+  naf: "62.01Z",
   city: "Orléans",
   description:
-    "Création de sites web pour indépendants, artisans et petites entreprises. Un design soigné, des tarifs clairs et un interlocuteur direct à Orléans, partout en France.",
+    "Webase, développeur web indépendant à Orléans : création de sites internet, d’applications web et mobiles et de plateformes sur mesure pour les indépendants, TPE et PME.",
+  /**
+   * Public profiles owned by Webase or Luis Doudeau (LinkedIn, GitHub, Malt, Google Business
+   * Profile…). Feeds `sameAs` in structured data. Add only real, maintained profiles.
+   */
+  profiles: [] as string[],
+} as const;
+
+/**
+ * Orléans Métropole communes, used for the visible service area and `areaServed`.
+ * Source: orleans-metropole.fr. Listed once, never turned into one page per town.
+ */
+export const serviceArea = {
+  metropolis: "Orléans Métropole",
+  department: "Loiret",
+  communes: [
+    "Orléans",
+    "Boigny-sur-Bionne",
+    "Bou",
+    "Chanteau",
+    "La Chapelle-Saint-Mesmin",
+    "Chécy",
+    "Combleux",
+    "Fleury-les-Aubrais",
+    "Ingré",
+    "Mardié",
+    "Marigny-les-Usages",
+    "Olivet",
+    "Ormes",
+    "Saint-Cyr-en-Val",
+    "Saint-Denis-en-Val",
+    "Saint-Hilaire-Saint-Mesmin",
+    "Saint-Jean-de-Braye",
+    "Saint-Jean-de-la-Ruelle",
+    "Saint-Jean-le-Blanc",
+    "Saint-Pryvé-Saint-Mesmin",
+    "Saran",
+    "Semoy",
+  ],
 } as const;
 
 export const navigation = [
-  { href: "/services", label: "Expertises" },
+  { href: "/services", label: "Services" },
   { href: "/realisations", label: "Réalisations" },
   { href: "/offres", label: "Offres & tarifs" },
   { href: "/studio", label: "Le studio" },
@@ -120,6 +169,7 @@ export const faqs = [
     question: "Qu’est-ce qui est compris dans le prix ?",
     answer:
       "Le cadrage, le design, le développement, l’adaptation aux écrans, les bases du référencement et l’accompagnement à la mise en ligne. Le nombre de pages et de retours dépend de l’offre. Les textes, photos, achats de licences, le domaine et l’hébergement sont à prévoir séparément, sauf mention au devis.",
+    link: { href: "/offres#compris", label: "Voir le détail des offres." },
   },
   {
     question: "Y a-t-il un abonnement obligatoire ?",
@@ -140,5 +190,20 @@ export const faqs = [
     question: "Vous pouvez reprendre mon site actuel ?",
     answer:
       "Oui. Je commence par examiner l’existant : contenu, design, fonctionnement et contraintes techniques. L’objectif est de conserver ce qui fonctionne et de chiffrer les améliorations utiles. Les refontes, boutiques et fonctionnalités spécifiques sont étudiées sur devis.",
+    link: { href: "/services/refonte-site-internet", label: "Comment se passe une refonte ?" },
+  },
+  {
+    question: "Développez-vous aussi des applications web et mobiles ?",
+    answer:
+      "Oui. Outil interne, espace client, plateforme SaaS, MVP ou application iOS et Android : ces projets commencent par un cadrage, puis une première version réaliste, chiffrée sur devis.",
+    link: {
+      href: "/services/developpement-application-web",
+      label: "Découvrir le développement d’applications.",
+    },
+  },
+  {
+    question: "Travaillez-vous uniquement avec des entreprises d’Orléans ?",
+    answer:
+      "Non. Je suis basé à Orléans et j’accompagne en priorité les entreprises de la métropole et du Loiret, mais une grande partie du travail se fait à distance. Je travaille aussi avec des clients partout en France, avec des points réguliers en visio.",
   },
 ] as const;

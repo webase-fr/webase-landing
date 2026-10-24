@@ -20,28 +20,34 @@ import { OffersCards } from "@/components/sections/OffersCards";
 import { MethodSection } from "@/components/sections/MethodSection";
 import { FAQSection } from "@/components/sections/FAQSection";
 import { BriefSection } from "@/components/sections/BriefSection";
+import { ServiceCards } from "@/components/sections/ServiceCards";
 import { ProjectGrid } from "@/components/projects/ProjectGrid";
+import { JsonLd } from "@/components/seo/JsonLd";
 import { projects } from "@/content/projects";
 import { pageMetadata } from "@/lib/metadata";
+import { businessNode, founderNode, graph, websiteNode } from "@/lib/structured-data";
 
+const title = "Création de site internet et d’applications à Orléans";
 export const metadata: Metadata = {
   ...pageMetadata(
-    "Création de sites web à Orléans",
+    title,
     "/",
-    "Webase, studio web indépendant à Orléans. Sites soignés pour artisans, indépendants et TPE. Offres dès 990 € HT, devis gratuit et accompagnement direct.",
+    "Webase, développeur web indépendant à Orléans : création de sites vitrines et e-commerce, applications web et mobiles, SaaS. Dès 990 € HT, devis gratuit.",
   ),
-  title: { absolute: "Webase | Création de sites web à Orléans" },
+  title: { absolute: `${title} | Webase` },
 };
 export default function Home() {
   return (
     <>
+      <JsonLd data={graph(businessNode(), websiteNode(), founderNode())} />
       <section className="hero">
         <Container className="hero-grid">
           <div className="hero-copy">
-            <p className="eyebrow">
-              <span className="status-dot" /> STUDIO WEB INDÉPENDANT · ORLÉANS
-            </p>
             <h1>
+              <span className="eyebrow">
+                <span className="status-dot" /> Webase · Création de sites et d’applications à
+                Orléans
+              </span>{" "}
               Votre savoir‑faire.
               <br />
               <span>
@@ -54,8 +60,9 @@ export default function Home() {
               Votre site devrait le montrer.
             </p>
             <p className="hero-detail">
-              Des sites clairs, soignés et utiles pour les indépendants, les artisans et les petites
-              entreprises.
+              Sites vitrines, boutiques en ligne, applications web et mobiles : je conçois et
+              développe des outils clairs, rapides et utiles pour les indépendants, TPE et PME
+              d’Orléans et du Loiret.
             </p>
             <div className="button-row">
               <ButtonLink href="#votre-projet">
@@ -85,15 +92,36 @@ export default function Home() {
             <strong>Avec de l’ambition.</strong>
           </span>
           <div>
-            <span>Artisans & créateurs</span>
-            <span>Indépendants & consultants</span>
-            <span>Commerces & TPE</span>
+            <span>Artisans & commerces</span>
+            <span>Indépendants & TPE</span>
+            <span>PME & startups</span>
           </div>
           <span className="audience-plus" aria-hidden="true">
             ↗
           </span>
         </div>
       </Container>
+      <Section id="services" className="services-section">
+        <Container>
+          <SectionHeading
+            eyebrow="Services · Orléans et à distance"
+            title={
+              <>
+                Un site, une application.
+                <br />
+                Un seul interlocuteur.
+              </>
+            }
+            description="De la création de site internet au développement d’applications sur mesure, chaque projet est conçu, développé et suivi par la même personne."
+            action={
+              <Link href="/services" className="text-link">
+                Tous les services <ArrowUpRight size={18} />
+              </Link>
+            }
+          />
+          <ServiceCards />
+        </Container>
+      </Section>
       <Section>
         <Container>
           <SectionHeading
@@ -127,7 +155,7 @@ export default function Home() {
                 icon: Code2,
                 n: "03",
                 title: "Solide pour la suite.",
-                text: "Un site rapide à consulter, des contenus structurés et une base technique entretenable. Votre activité peut évoluer.",
+                text: "Un code sur mesure, sans constructeur de pages : un site rapide, des contenus structurés pour les moteurs de recherche et une base entretenable.",
                 detail: "Développement & suivi",
               },
             ].map((item) => (
@@ -217,6 +245,10 @@ export default function Home() {
               Je suis Luis Doudeau, développeur indépendant à Orléans. J’accompagne les entreprises
               qui veulent un site à la hauteur de leur travail, et quelqu’un sur qui s’appuyer pour
               le construire.
+            </p>
+            <p>
+              Je travaille avec les professionnels d’Orléans et de sa métropole, d’Olivet à
+              Saint-Jean-de-Braye, de Saran à Saint-Jean-le-Blanc, et à distance partout en France.
             </p>
             <ul className="studio-principles">
               <li>

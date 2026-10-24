@@ -1,19 +1,31 @@
+import type { ReactNode } from "react";
 import { Plus, ArrowUpRight } from "lucide-react";
 import Link from "next/link";
 import { faqs } from "@/content/site";
 import { Container } from "@/components/ui/Container";
 import { Section } from "@/components/ui/Section";
-export function FAQSection() {
+/** Answers stay in the HTML (native details), so they are readable without JavaScript. */
+export function FAQSection({
+  items = faqs,
+  eyebrow = "Tout simplement",
+  title = (
+    <>
+      Les bonnes
+      <br />
+      questions.
+    </>
+  ),
+}: {
+  items?: readonly { question: string; answer: string; link?: { href: string; label: string } }[];
+  eyebrow?: string;
+  title?: ReactNode;
+}) {
   return (
     <Section className="faq-section">
       <Container className="faq-layout">
         <div>
-          <p className="eyebrow">Tout simplement</p>
-          <h2>
-            Les bonnes
-            <br />
-            questions.
-          </h2>
+          <p className="eyebrow">{eyebrow}</p>
+          <h2>{title}</h2>
           <p className="section-description">
             Un projet clair commence par
             <br />
@@ -24,13 +36,23 @@ export function FAQSection() {
           </Link>
         </div>
         <div className="faq-list">
-          {faqs.map((item) => (
+          {items.map((item) => (
             <details key={item.question} name="faq">
               <summary>
                 {item.question}
                 <Plus size={20} aria-hidden="true" />
               </summary>
-              <p>{item.answer}</p>
+              <p>
+                {item.answer}
+                {item.link && (
+                  <>
+                    {" "}
+                    <Link href={item.link.href} className="faq-link">
+                      {item.link.label}
+                    </Link>
+                  </>
+                )}
+              </p>
             </details>
           ))}
         </div>

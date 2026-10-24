@@ -27,6 +27,7 @@ Ouvrir http://localhost:3000. Aucun secret n’est requis pour parcourir le site
 | pnpm format:check | Vérifier la présentation du code                                          |
 | pnpm preflight    | Vérifier la configuration de mise en ligne, sans envoyer de mail          |
 | pnpm smoke        | Vérifier les routes et les liens internes sur le serveur local            |
+| pnpm seo          | Contrôler title, description, canonical, h1 et JSON-LD des URL du sitemap |
 | pnpm audit --prod | Audit des dépendances de production                                       |
 
 Pour les tests navigateur, installer Firefox et Chromium une fois dans le projet :
@@ -63,7 +64,9 @@ Next.js App Router, React, TypeScript strict et Tailwind sont conservés. Les pa
 
 ## Modifier le site
 
-- Offres, FAQ, navigation, identité : `src/content/site.ts`.
+- Offres, FAQ, navigation, identité, zone d’intervention : `src/content/site.ts`.
+- Pages de services (`/services/<slug>`) : `src/content/services.ts`. Une entrée = une page, une intention de recherche. Voir [la stratégie SEO](docs/SEO.md) avant d’en ajouter.
+- Profils publics (LinkedIn, GitHub, Malt, fiche Google…) : `site.profiles`, repris dans les données structurées.
 - Prix de départ : `offerStartingPrices` dans ce même fichier, communs aux offres et à l’estimation.
 - Présentation des briefs : `src/content/briefs.ts` et `BriefCards`, partagés entre l’accueil, la page d’estimation et le changement de format.
 - Aide au choix des offres : `src/lib/offer-finder.ts`. Le tarif vient toujours des offres ; aucun prix supplémentaire à synchroniser.
@@ -90,6 +93,7 @@ Next.js App Router, React, TypeScript strict et Tailwind sont conservés. Les pa
 - [Activer la réception des demandes](docs/MAILING.md)
 - [Résultats et limites des vérifications](docs/VERIFICATION.md)
 - [Revue technique et décision de mise en production](docs/REVUE-PRODUCTION.md)
+- [Stratégie SEO, architecture et actions externes](docs/SEO.md)
 
 ## Mise en ligne
 
@@ -99,6 +103,6 @@ Le site requiert un hébergement Next.js avec runtime Node.js et Server Actions 
 
 Renseigner le domaine public, la configuration Resend, Redis et les coordonnées de l’hébergeur dans l’environnement, exécuter `pnpm preflight`, puis `pnpm check && pnpm build`. Garder les secrets côté serveur.
 
-`SITE_URL` vide désactive l’indexation et produit un sitemap vide. Les informations légales d’hébergement sont issues de `HOSTING_NAME`, `HOSTING_ADDRESS` et `HOSTING_CONTACT` au build.
+Indexation : sur Vercel, seule la production (`VERCEL_ENV=production`) est indexable, même sans `SITE_URL` ; les prévisualisations restent en `noindex` avec un `robots.txt` bloquant. Hors Vercel, `SITE_URL` vide désactive l’indexation et produit un sitemap vide. Les canonicals pointent toujours vers `https://webase.fr` (ou `SITE_URL` s’il est défini). Les informations légales d’hébergement sont issues de `HOSTING_NAME`, `HOSTING_ADDRESS` et `HOSTING_CONTACT` au build.
 
 La réception réelle doit être vérifiée avec les identifiants de production. Les tests automatisés simulent les réponses des prestataires ; ils ne prouvent pas l’arrivée dans Gmail.

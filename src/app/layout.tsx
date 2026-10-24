@@ -3,7 +3,7 @@ import localFont from "next/font/local";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { site } from "@/content/site";
-import { getSiteUrl } from "@/lib/metadata";
+import { getSiteUrl, isIndexable } from "@/lib/metadata";
 import "./globals.css";
 
 const figtree = localFont({
@@ -14,9 +14,14 @@ const figtree = localFont({
 });
 export const metadata: Metadata = {
   metadataBase: getSiteUrl(),
-  title: { default: "Webase — Votre savoir-faire. Un site à sa hauteur.", template: "%s | Webase" },
+  title: {
+    default: "Webase — Création de sites internet et d’applications à Orléans",
+    template: "%s | Webase",
+  },
   description: site.description,
-  robots: process.env.SITE_URL ? { index: true, follow: true } : { index: false, follow: false },
+  applicationName: site.name,
+  authors: [{ name: site.owner, url: "/studio" }],
+  robots: isIndexable() ? { index: true, follow: true } : { index: false, follow: false },
   twitter: { card: "summary_large_image" },
 };
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {

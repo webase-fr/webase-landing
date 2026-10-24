@@ -2,7 +2,11 @@ import { ContactForm } from "@/components/forms/ContactForm";
 import { FormSidebar } from "@/components/forms/FormSidebar";
 import { Container } from "@/components/ui/Container";
 import { pageMetadata } from "@/lib/metadata";
-export const metadata = pageMetadata("Contact", "/contact");
+export const metadata = pageMetadata(
+  "Contacter un développeur web à Orléans",
+  "/contact",
+  "Une question, une idée de site ou d’application ? Écrivez directement à Luis Doudeau, développeur web indépendant à Orléans. Réponse personnelle, sans engagement.",
+);
 export default function ContactPage() {
   return (
     <section className="form-page">

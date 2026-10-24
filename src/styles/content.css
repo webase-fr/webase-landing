@@ -106,9 +106,6 @@
 .article-title {
   font-size: var(--heading-lg);
 }
-.article-back {
-  margin-bottom: 30px;
-}
 
 .token-grid {
   display: grid;

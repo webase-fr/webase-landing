@@ -7,17 +7,26 @@ import { OffersCards } from "@/components/sections/OffersCards";
 import { OfferFinder } from "@/components/sections/OfferFinder";
 import { FAQSection } from "@/components/sections/FAQSection";
 import { CTASection } from "@/components/sections/CTASection";
+import Link from "next/link";
+import { JsonLd } from "@/components/seo/JsonLd";
 import { pageMetadata } from "@/lib/metadata";
+import { graph, offerCatalogNode } from "@/lib/structured-data";
 export const metadata = pageMetadata(
-  "Offres & tarifs",
+  "Prix d’un site internet : offres et tarifs",
   "/offres",
-  "Trois offres de création de site web : une page dès 990 € HT, site vitrine dès 1 990 € HT, site administrable dès 3 490 € HT. Périmètre clair, devis gratuit.",
+  "Combien coûte un site internet ? Une page dès 990 € HT, un site vitrine dès 1 990 € HT, un site administrable dès 3 490 € HT. Devis gratuit à Orléans.",
 );
 export default function OffersPage() {
   return (
     <>
+      <JsonLd data={graph(offerCatalogNode())} />
       <PageIntro
-        eyebrow="Offres & tarifs"
+        breadcrumbs={[
+          { name: "Accueil", path: "/" },
+          { name: "Offres & tarifs", path: "/offres" },
+        ]}
+        eyebrow="Tarifs de création de site internet"
+        eyebrowInTitle
         title={
           <>
             La bonne dimension.
@@ -123,8 +132,12 @@ export default function OffersPage() {
               <p className="eyebrow">Votre besoin sort du cadre ?</p>
               <h2>Alors, parlons-en.</h2>
               <p>
-                Refonte, boutique en ligne, réservation, espace client ou application métier : on
-                étudie le besoin avant de parler solution et budget.
+                <Link href="/services/refonte-site-internet">Refonte</Link>,{" "}
+                <Link href="/services/creation-site-e-commerce">boutique en ligne</Link>,{" "}
+                <Link href="/services/developpement-application-web">application métier</Link>,{" "}
+                <Link href="/services/creation-application-mobile">application mobile</Link> ou{" "}
+                <Link href="/services/developpement-saas-mvp">plateforme SaaS</Link> : on étudie le
+                besoin avant de parler solution et budget.
               </p>
             </div>
             <ButtonLink href="/estimation?format=complet">

@@ -1,10 +1,10 @@
 import type { MetadataRoute } from "next";
-import { getSiteUrl } from "@/lib/metadata";
+import { absoluteUrl, isIndexable } from "@/lib/metadata";
 export default function robots(): MetadataRoute.Robots {
-  return process.env.SITE_URL
+  return isIndexable()
     ? {
-        rules: { userAgent: "*", allow: "/", disallow: ["/api/"] },
-        sitemap: new URL("/sitemap.xml", getSiteUrl()).href,
+        rules: { userAgent: "*", allow: "/" },
+        sitemap: absoluteUrl("/sitemap.xml"),
       }
     : { rules: { userAgent: "*", disallow: "/" } };
 }
